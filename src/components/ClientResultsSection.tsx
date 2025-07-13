@@ -1,7 +1,11 @@
 import { Card } from "@/components/ui/card";
-import { Star, DollarSign, TrendingUp, Clock } from "lucide-react";
+import { Star, DollarSign, TrendingUp, Clock, MessageSquare } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export function ClientResultsSection() {
+  const [popupTestimonials, setPopupTestimonials] = useState<Array<{id: number, testimonial: any, visible: boolean}>>([]);
+  const [testimonialIndex, setTestimonialIndex] = useState(0);
+
   const testimonials = [
     {
       quote: "I made $424 overnight after Harper set up my Beacons store. I didn't even know how to log in before this.",
@@ -42,8 +46,62 @@ export function ClientResultsSection() {
       icon: "⏰",
       metric: "20hrs saved/week",
       metricIcon: Clock
+    },
+    {
+      quote: "Just made my first $1,200 this week! Harper's system works like magic.",
+      name: "Emma K.",
+      role: "New Affiliate",
+      icon: "✨",
+      metric: "$1,200 first week",
+      metricIcon: DollarSign
+    },
+    {
+      quote: "My engagement went from 50 to 2,500 followers in one month!",
+      name: "David R.",
+      role: "Content Creator",
+      icon: "📈",
+      metric: "2,500 followers",
+      metricIcon: TrendingUp
+    },
+    {
+      quote: "Setup took 30 minutes. First sale came 2 hours later. Incredible!",
+      name: "Lisa T.",
+      role: "Working Mom",
+      icon: "⚡",
+      metric: "2hr first sale",
+      metricIcon: Clock
     }
   ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const testimonial = testimonials[testimonialIndex % testimonials.length];
+      const newPopup = {
+        id: Date.now(),
+        testimonial,
+        visible: true
+      };
+
+      setPopupTestimonials(prev => [...prev, newPopup]);
+      setTestimonialIndex(prev => prev + 1);
+
+      // Remove popup after 5 seconds
+      setTimeout(() => {
+        setPopupTestimonials(prev => 
+          prev.map(popup => 
+            popup.id === newPopup.id ? { ...popup, visible: false } : popup
+          )
+        );
+      }, 5000);
+
+      // Clean up hidden popups after 6 seconds
+      setTimeout(() => {
+        setPopupTestimonials(prev => prev.filter(popup => popup.id !== newPopup.id));
+      }, 6000);
+    }, 10000); // New popup every 10 seconds (changed from 60 seconds for demo)
+
+    return () => clearInterval(interval);
+  }, [testimonialIndex]);
 
   return (
     <section className="py-20 bg-background">
@@ -123,6 +181,53 @@ export function ClientResultsSection() {
               </Card>
             </div>
           ))}
+        </div>
+
+        {/* Animated Popup Testimonials */}
+        <div className="fixed bottom-4 right-4 z-50 space-y-2">
+          {popupTestimonials.map((popup) => {
+            const MetricIcon = popup.testimonial.metricIcon;
+            return (
+              <div
+                key={popup.id}
+                className={`
+                  bg-background border shadow-glow rounded-lg p-4 max-w-sm transform transition-all duration-500 ease-out
+                  ${popup.visible 
+                    ? 'translate-x-0 opacity-100 scale-100' 
+                    : 'translate-x-full opacity-0 scale-95'
+                  }
+                `}
+              >
+                <div className="flex items-start gap-3">
+                  <div className="flex-shrink-0">
+                    <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                      <MessageSquare className="h-4 w-4 text-primary" />
+                    </div>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <p className="text-sm font-semibold text-foreground truncate">
+                        {popup.testimonial.name}
+                      </p>
+                      <span className="text-xs text-muted-foreground">just now</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground mb-2 line-clamp-2">
+                      {popup.testimonial.quote}
+                    </p>
+                    <div className="flex items-center gap-1">
+                      <MetricIcon className="h-3 w-3 text-success" />
+                      <span className="text-xs font-bold text-success">
+                        {popup.testimonial.metric}
+                      </span>
+                      <span className="text-xs text-muted-foreground ml-auto">
+                        {popup.testimonial.icon}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
