@@ -32,7 +32,7 @@ export function UrgencyBannerSection() {
   const handleWhatsAppClick = () => {
     const message = "Hey Harper, I saw there are only 3 spots left for July setup! I don't want to miss out. Can we get my store ready to sell in 72 hours?";
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/+234812729753?text=${encodedMessage}`, '_blank');
+    window.open(`https://wa.me/+2348127297536?text=${encodedMessage}`, '_blank');
   };
 
   return (

@@ -20,7 +20,7 @@ export function WhatIfSection() {
   const handleWhatsAppClick = () => {
     const message = "Hey Harper, I'm tired of waiting and watching others succeed. I'm ready to get my digital business set up properly. Let's do this!";
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/+234812729753?text=${encodedMessage}`, '_blank');
+    window.open(`https://wa.me/+2348127297536?text=${encodedMessage}`, '_blank');
   };
 
   const handleEmailClick = () => {

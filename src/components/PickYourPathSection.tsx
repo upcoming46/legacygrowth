@@ -29,7 +29,7 @@ export function PickYourPathSection() {
 
   const handleWhatsAppClick = (message: string) => {
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/+234812729753?text=${encodedMessage}`, '_blank');
+    window.open(`https://wa.me/+2348127297536?text=${encodedMessage}`, '_blank');
   };
 
   return (

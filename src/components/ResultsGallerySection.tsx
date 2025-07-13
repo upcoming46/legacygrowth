@@ -61,7 +61,7 @@ export function ResultsGallerySection() {
           <Badge className="bg-accent text-accent-foreground mb-4 px-4 py-2">
             ✨ Trusted by 100+ Students
           </Badge>
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-6">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6">
             Results Gallery
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -75,7 +75,7 @@ export function ResultsGallerySection() {
             return (
               <Card 
                 key={index}
-                className={`bg-${result.gradient} p-6 text-white border-0 hover:transform hover:scale-105 transition-all duration-500 hover:shadow-luxury group relative overflow-hidden`}
+                className={`bg-gradient-luxury p-6 text-white border-0 hover:transform hover:scale-105 transition-all duration-500 hover:shadow-luxury group relative overflow-hidden`}
               >
                 <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full -translate-y-10 translate-x-10"></div>
                 <div className="relative z-10">
