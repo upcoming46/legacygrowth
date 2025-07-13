@@ -5,7 +5,7 @@ import heroImage from "@/assets/hero-image.jpg";
 
 export function HeroSection() {
   const handleWhatsAppClick = () => {
-    window.open("https://wa.me/27812729753", "_blank");
+    window.open("https://wa.me/+234812729753", "_blank");
   };
 
   const handleEmailClick = () => {
@@ -13,7 +13,7 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-luxury">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -41,14 +41,14 @@ export function HeroSection() {
               </Card>
             </div>
 
-            <h1 className="text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-5xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight">
               From Stuck to{" "}
-              <span className="bg-gradient-to-r from-yellow-300 to-green-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-accent to-accent/80 bg-clip-text text-transparent">
                 Sales
               </span>
             </h1>
             
-            <h2 className="text-xl lg:text-2xl text-white/90 mb-4 font-medium">
+            <h2 className="text-xl lg:text-2xl text-white/90 mb-4 font-medium font-serif">
               The Digital Shortcut That's Changing Lives
             </h2>
             

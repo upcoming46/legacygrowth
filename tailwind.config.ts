@@ -18,6 +18,10 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'serif': ['Playfair Display', 'serif'],
+				'sans': ['Inter', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -49,6 +53,12 @@ export default {
 					DEFAULT: 'hsl(var(--success))',
 					foreground: 'hsl(var(--success-foreground))'
 				},
+				luxury: {
+					gold: 'hsl(var(--luxury-gold))',
+					navy: 'hsl(var(--luxury-navy))',
+					purple: 'hsl(var(--luxury-purple))',
+					black: 'hsl(var(--luxury-black))'
+				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
 					foreground: 'hsl(var(--popover-foreground))'
@@ -74,14 +84,20 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			backgroundImage: {
-				'gradient-primary': 'var(--gradient-primary)',
-				'gradient-success': 'var(--gradient-success)',
+				'gradient-luxury': 'var(--gradient-luxury)',
+				'gradient-gold': 'var(--gradient-gold)',
+				'gradient-navy': 'var(--gradient-navy)',
+				'gradient-purple': 'var(--gradient-purple)',
 				'gradient-hero': 'var(--gradient-hero)'
 			},
 			boxShadow: {
 				'glow': 'var(--shadow-glow)',
-				'success': 'var(--shadow-success)',
+				'luxury': 'var(--shadow-luxury)',
+				'gold': 'var(--shadow-gold)',
 				'elegant': 'var(--shadow-elegant)'
+			},
+			transitionProperty: {
+				'luxury': 'var(--transition-luxury)'
 			},
 			keyframes: {
 				'accordion-down': {
