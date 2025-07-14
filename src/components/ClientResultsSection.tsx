@@ -1,6 +1,11 @@
 import { Card } from "@/components/ui/card";
 import { Star, DollarSign, TrendingUp, Clock, MessageSquare } from "lucide-react";
 import { useState, useEffect } from "react";
+import result1 from "@/assets/client-results/result-1.jpg";
+import result2 from "@/assets/client-results/result-2.jpg";
+import result3 from "@/assets/client-results/result-3.jpg";
+import result4 from "@/assets/client-results/result-4.jpg";
+import result5 from "@/assets/client-results/result-5.jpg";
 
 export function ClientResultsSection() {
   const [popupTestimonials, setPopupTestimonials] = useState<Array<{id: number, testimonial: any, visible: boolean}>>([]);
@@ -13,7 +18,8 @@ export function ClientResultsSection() {
       role: "Digital Entrepreneur",
       icon: "💰",
       metric: "$474,542 total",
-      metricIcon: DollarSign
+      metricIcon: DollarSign,
+      image: result1
     },
     {
       quote: "My PayPal went from $0 to $70,900 in just a few months. Harper's strategies actually work!",
@@ -21,7 +27,8 @@ export function ClientResultsSection() {
       role: "Course Creator", 
       icon: "🚀",
       metric: "$70,900 PayPal",
-      metricIcon: DollarSign
+      metricIcon: DollarSign,
+      image: result2
     },
     {
       quote: "Got a $30,000 credit alert from my bank after implementing Harper's system. This changed everything!",
@@ -29,7 +36,8 @@ export function ClientResultsSection() {
       role: "Affiliate Marketer",
       icon: "🏦", 
       metric: "$30,000 alert",
-      metricIcon: DollarSign
+      metricIcon: DollarSign,
+      image: result3
     },
     {
       quote: "My Beacons store hit $38,378.73 this month alone. Harper's setup process is incredible!",
@@ -37,7 +45,8 @@ export function ClientResultsSection() {
       role: "Digital Creator",
       icon: "📊",
       metric: "$38,378.73/month",
-      metricIcon: TrendingUp
+      metricIcon: TrendingUp,
+      image: result4
     },
     {
       quote: "Woke up to $20,833 direct deposit in my Cash App. Harper's automation really works while you sleep!",
@@ -45,7 +54,8 @@ export function ClientResultsSection() {
       role: "Busy Parent",
       icon: "😴",
       metric: "$20,833 deposit",
-      metricIcon: DollarSign
+      metricIcon: DollarSign,
+      image: result5
     },
     {
       quote: "My bank balance went to $256,880. I was broke 6 months ago. Harper saved my life!",
@@ -53,7 +63,8 @@ export function ClientResultsSection() {
       role: "Former 9-5er",
       icon: "🙏",
       metric: "$256,880 balance",
-      metricIcon: DollarSign
+      metricIcon: DollarSign,
+      image: result1
     },
     {
       quote: "My Stan store generated $12,747 with 3,057 visits. Harper's conversion tactics are insane!",
@@ -61,7 +72,8 @@ export function ClientResultsSection() {
       role: "Content Creator",
       icon: "📈",
       metric: "$12,747 revenue",
-      metricIcon: TrendingUp
+      metricIcon: TrendingUp,
+      image: result2
     },
     {
       quote: "From $0 to $25,639.73 in total earnings. Harper doesn't just teach, he delivers results!",
@@ -69,7 +81,8 @@ export function ClientResultsSection() {
       role: "New Entrepreneur",
       icon: "✨",
       metric: "$25,639.73 total",
-      metricIcon: DollarSign
+      metricIcon: DollarSign,
+      image: result3
     }
   ];
 
@@ -128,6 +141,15 @@ export function ClientResultsSection() {
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-success/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 
                 <div className="relative z-10">
+                  {/* Result Image */}
+                  <div className="mb-4">
+                    <img 
+                      src={testimonial.image} 
+                      alt="Client result screenshot" 
+                      className="w-full h-32 object-cover rounded-lg shadow-md"
+                    />
+                  </div>
+
                   {/* Stars */}
                   <div className="flex gap-1 mb-4">
                     {[...Array(5)].map((_, i) => (

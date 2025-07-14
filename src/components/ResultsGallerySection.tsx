@@ -1,6 +1,11 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp, DollarSign, Users, Eye } from "lucide-react";
+import result1 from "@/assets/client-results/result-1.jpg";
+import result2 from "@/assets/client-results/result-2.jpg";
+import result3 from "@/assets/client-results/result-3.jpg";
+import result4 from "@/assets/client-results/result-4.jpg";
+import result5 from "@/assets/client-results/result-5.jpg";
 
 export function ResultsGallerySection() {
   const results = [
@@ -10,7 +15,8 @@ export function ResultsGallerySection() {
       description: "Total cash app earnings",
       time: "Real client result",
       icon: DollarSign,
-      gradient: "gradient-gold"
+      gradient: "gradient-gold",
+      image: result1
     },
     {
       type: "Bank Balance", 
@@ -18,7 +24,8 @@ export function ResultsGallerySection() {
       description: "Available bank balance",
       time: "Real client result",
       icon: DollarSign,
-      gradient: "gradient-purple"
+      gradient: "gradient-purple",
+      image: result2
     },
     {
       type: "PayPal Balance",
@@ -26,7 +33,8 @@ export function ResultsGallerySection() {
       description: "PayPal account balance",
       time: "Real client result",
       icon: DollarSign,
-      gradient: "gradient-navy"
+      gradient: "gradient-navy",
+      image: result3
     },
     {
       type: "Beacons Revenue",
@@ -34,7 +42,8 @@ export function ResultsGallerySection() {
       description: "Monthly Beacons earnings", 
       time: "Real client result",
       icon: TrendingUp,
-      gradient: "gradient-gold"
+      gradient: "gradient-gold",
+      image: result4
     },
     {
       type: "Credit Alert",
@@ -42,7 +51,8 @@ export function ResultsGallerySection() {
       description: "Bank credit notification",
       time: "Real client result", 
       icon: DollarSign,
-      gradient: "gradient-purple"
+      gradient: "gradient-purple",
+      image: result5
     },
     {
       type: "Store Revenue",
@@ -50,7 +60,8 @@ export function ResultsGallerySection() {
       description: "Digital store earnings",
       time: "Real client result",
       icon: TrendingUp,
-      gradient: "gradient-navy"
+      gradient: "gradient-navy",
+      image: result1
     },
     {
       type: "Direct Deposit",
@@ -58,7 +69,8 @@ export function ResultsGallerySection() {
       description: "Cash App direct deposit",
       time: "Real client result",
       icon: DollarSign,
-      gradient: "gradient-gold"
+      gradient: "gradient-gold",
+      image: result2
     },
     {
       type: "Stan Store",
@@ -66,7 +78,8 @@ export function ResultsGallerySection() {
       description: "Stan store total revenue",
       time: "Real client result",
       icon: TrendingUp,
-      gradient: "gradient-purple"
+      gradient: "gradient-purple",
+      image: result3
     },
     {
       type: "Daily Balance",
@@ -74,7 +87,8 @@ export function ResultsGallerySection() {
       description: "Cash App daily balance",
       time: "Real client result",
       icon: DollarSign,
-      gradient: "gradient-navy"
+      gradient: "gradient-navy",
+      image: result4
     }
   ];
 
@@ -103,6 +117,15 @@ export function ResultsGallerySection() {
               >
                 <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full -translate-y-10 translate-x-10"></div>
                 <div className="relative z-10">
+                  {/* Result Screenshot */}
+                  <div className="mb-4">
+                    <img 
+                      src={result.image} 
+                      alt={`${result.type} result screenshot`} 
+                      className="w-full h-24 object-cover rounded-lg shadow-lg opacity-90"
+                    />
+                  </div>
+                  
                   <div className="flex items-center justify-between mb-4">
                     <Badge variant="secondary" className="bg-white/20 text-white border-0">
                       {result.type}
