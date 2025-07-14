@@ -5,51 +5,75 @@ import { TrendingUp, DollarSign, Users, Eye } from "lucide-react";
 export function ResultsGallerySection() {
   const results = [
     {
-      type: "Sale Notification",
-      amount: "$424",
-      description: "Overnight sale after setup",
-      time: "3:42 AM",
+      type: "Cash App Balance",
+      amount: "$474,542",
+      description: "Total cash app earnings",
+      time: "Real client result",
       icon: DollarSign,
       gradient: "gradient-gold"
     },
     {
-      type: "Traffic Spike", 
-      amount: "1.6K",
-      description: "TikTok views in 3 days",
-      time: "2 hours ago",
-      icon: Eye,
+      type: "Bank Balance", 
+      amount: "$256,880",
+      description: "Available bank balance",
+      time: "Real client result",
+      icon: DollarSign,
       gradient: "gradient-purple"
     },
     {
-      type: "Revenue Stream",
-      amount: "$1,200", 
-      description: "First week earnings",
-      time: "Just now",
+      type: "PayPal Balance",
+      amount: "$70,900", 
+      description: "PayPal account balance",
+      time: "Real client result",
+      icon: DollarSign,
+      gradient: "gradient-navy"
+    },
+    {
+      type: "Beacons Revenue",
+      amount: "$38,378",
+      description: "Monthly Beacons earnings", 
+      time: "Real client result",
+      icon: TrendingUp,
+      gradient: "gradient-gold"
+    },
+    {
+      type: "Credit Alert",
+      amount: "$30,000",
+      description: "Bank credit notification",
+      time: "Real client result", 
+      icon: DollarSign,
+      gradient: "gradient-purple"
+    },
+    {
+      type: "Store Revenue",
+      amount: "$25,639",
+      description: "Digital store earnings",
+      time: "Real client result",
       icon: TrendingUp,
       gradient: "gradient-navy"
     },
     {
-      type: "Follower Growth",
-      amount: "2,500",
-      description: "New followers in 30 days", 
-      time: "1 week ago",
-      icon: Users,
+      type: "Direct Deposit",
+      amount: "$20,833",
+      description: "Cash App direct deposit",
+      time: "Real client result",
+      icon: DollarSign,
       gradient: "gradient-gold"
     },
     {
-      type: "Commission Earned",
-      amount: "$856",
-      description: "Single affiliate sale",
-      time: "5 minutes ago", 
-      icon: DollarSign,
+      type: "Stan Store",
+      amount: "$12,747",
+      description: "Stan store total revenue",
+      time: "Real client result",
+      icon: TrendingUp,
       gradient: "gradient-purple"
     },
     {
-      type: "Conversion Rate",
-      amount: "23%",
-      description: "Store conversion rate",
-      time: "Updated",
-      icon: TrendingUp,
+      type: "Daily Balance",
+      amount: "$15,102",
+      description: "Cash App daily balance",
+      time: "Real client result",
+      icon: DollarSign,
       gradient: "gradient-navy"
     }
   ];
@@ -59,7 +83,7 @@ export function ResultsGallerySection() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 sm:mb-16">
           <Badge className="bg-accent text-accent-foreground mb-4 px-3 sm:px-4 py-2 text-sm sm:text-base">
-            ✨ Trusted by 100+ Students
+            ✨ Trusted by 1000+ Students
           </Badge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-4 sm:mb-6">
             Results Gallery

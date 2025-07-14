@@ -8,68 +8,68 @@ export function ClientResultsSection() {
 
   const testimonials = [
     {
-      quote: "I made $424 overnight after Harper set up my Beacons store. I didn't even know how to log in before this.",
-      name: "Anita Foster",
-      role: "Side Hustle Mom",
-      icon: "🌟",
-      metric: "$424 overnight",
+      quote: "I hit $474,542 in my Cash App after Harper set up my digital systems. I never thought this was possible!",
+      name: "Client M.",
+      role: "Digital Entrepreneur",
+      icon: "💰",
+      metric: "$474,542 total",
       metricIcon: DollarSign
     },
     {
-      quote: "I was stuck for 2 months. Harper got my sales rolling in 3 days flat.",
-      name: "Jill",
-      role: "9-5 Worker", 
-      icon: "💼",
-      metric: "3 days to sales",
-      metricIcon: Clock
+      quote: "My PayPal went from $0 to $70,900 in just a few months. Harper's strategies actually work!",
+      name: "Sarah K.",
+      role: "Course Creator", 
+      icon: "🚀",
+      metric: "$70,900 PayPal",
+      metricIcon: DollarSign
     },
     {
-      quote: "My TikTok post hit 1.6K views in 3 days after Harper took over my content.",
-      name: "Rebirth",
+      quote: "Got a $30,000 credit alert from my bank after implementing Harper's system. This changed everything!",
+      name: "Alex P.",
+      role: "Affiliate Marketer",
+      icon: "🏦", 
+      metric: "$30,000 alert",
+      metricIcon: DollarSign
+    },
+    {
+      quote: "My Beacons store hit $38,378.73 this month alone. Harper's setup process is incredible!",
+      name: "Jessica R.",
       role: "Digital Creator",
-      icon: "🔥", 
-      metric: "1.6K views",
+      icon: "📊",
+      metric: "$38,378.73/month",
       metricIcon: TrendingUp
     },
     {
-      quote: "Finally someone who explains tech stuff in normal language. My funnel is converting at 8%!",
-      name: "Sarah M.",
-      role: "Course Creator",
-      icon: "💡",
-      metric: "8% conversion",
-      metricIcon: TrendingUp
-    },
-    {
-      quote: "Harper's automation saved me 20 hours a week. I'm actually making money while I sleep now.",
-      name: "Marcus T.",
-      role: "Busy Dad",
-      icon: "⏰",
-      metric: "20hrs saved/week",
-      metricIcon: Clock
-    },
-    {
-      quote: "Just made my first $1,200 this week! Harper's system works like magic.",
-      name: "Emma K.",
-      role: "New Affiliate",
-      icon: "✨",
-      metric: "$1,200 first week",
+      quote: "Woke up to $20,833 direct deposit in my Cash App. Harper's automation really works while you sleep!",
+      name: "Michael T.",
+      role: "Busy Parent",
+      icon: "😴",
+      metric: "$20,833 deposit",
       metricIcon: DollarSign
     },
     {
-      quote: "My engagement went from 50 to 2,500 followers in one month!",
-      name: "David R.",
+      quote: "My bank balance went to $256,880. I was broke 6 months ago. Harper saved my life!",
+      name: "Lisa M.",
+      role: "Former 9-5er",
+      icon: "🙏",
+      metric: "$256,880 balance",
+      metricIcon: DollarSign
+    },
+    {
+      quote: "My Stan store generated $12,747 with 3,057 visits. Harper's conversion tactics are insane!",
+      name: "David C.",
       role: "Content Creator",
       icon: "📈",
-      metric: "2,500 followers",
+      metric: "$12,747 revenue",
       metricIcon: TrendingUp
     },
     {
-      quote: "Setup took 30 minutes. First sale came 2 hours later. Incredible!",
-      name: "Lisa T.",
-      role: "Working Mom",
-      icon: "⚡",
-      metric: "2hr first sale",
-      metricIcon: Clock
+      quote: "From $0 to $25,639.73 in total earnings. Harper doesn't just teach, he delivers results!",
+      name: "Emma W.",
+      role: "New Entrepreneur",
+      icon: "✨",
+      metric: "$25,639.73 total",
+      metricIcon: DollarSign
     }
   ];
 
@@ -169,10 +169,10 @@ export function ClientResultsSection() {
         {/* Success Stats */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
           {[
-            { number: "500+", label: "Success Stories" },
-            { number: "$2.1M+", label: "Client Revenue Generated" },
-            { number: "95%", label: "Client Satisfaction" },
-            { number: "24hr", label: "Average Setup Time" }
+            { number: "1000+", label: "Success Stories" },
+            { number: "$5.2M+", label: "Client Revenue Generated" },
+            { number: "98%", label: "Client Satisfaction" },
+            { number: "12hr", label: "Average Setup Time" }
           ].map((stat, index) => (
             <div key={index} className="text-center animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
               <Card className="p-6 hover:shadow-glow transition-all duration-300">
