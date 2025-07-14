@@ -12,7 +12,7 @@ export function FinalCTASection() {
     const body = "Hi Harper,\n\nI'm ready to take my digital business to the next level and start seeing real results. I've seen your work and I'm impressed with what you've achieved for others.\n\nI'd love to discuss how you can help me:\n- Set up my digital business properly\n- Stop struggling with tech overwhelm\n- Start generating consistent sales\n\nWhen would be a good time to chat?\n\nBest regards";
     const encodedSubject = encodeURIComponent(subject);
     const encodedBody = encodeURIComponent(body);
-    window.open(`mailto:harperharvey834@gmail.com?subject=${encodedSubject}&body=${encodedBody}`, '_blank');
+    window.location.href = `mailto:harperharvey834@gmail.com?subject=${encodedSubject}&body=${encodedBody}`;
   };
 
   const benefits = [
