@@ -9,7 +9,11 @@ export function HeroSection() {
   };
 
   const handleEmailClick = () => {
-    window.location.href = "mailto:harperharvey834@gmail.com";
+    const subject = "Let's Turn My Digital Dreams Into Reality";
+    const body = "Hi Harper,\n\nI'm excited about the possibility of working with you to transform my digital business. I've been struggling with tech overwhelm and I'm ready for a clear path to success.\n\nI'd love to learn more about:\n- How you can help me set up my digital business\n- Your proven system for generating consistent sales\n- What results I can expect\n\nI'm ready to stop being stuck and start selling. When can we chat?\n\nBest regards";
+    const encodedSubject = encodeURIComponent(subject);
+    const encodedBody = encodeURIComponent(body);
+    window.open(`mailto:harperharvey834@gmail.com?subject=${encodedSubject}&body=${encodedBody}`, '_blank');
   };
 
   return (

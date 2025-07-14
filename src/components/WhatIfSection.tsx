@@ -24,7 +24,11 @@ export function WhatIfSection() {
   };
 
   const handleEmailClick = () => {
-    window.open('mailto:harperharvey834@gmail.com?subject=Ready to Transform My Digital Business&body=Hi Harper, I\'m ready to stop waiting and start succeeding. Let\'s discuss how you can help me set up my digital business properly.', '_blank');
+    const subject = "I Choose Success - Ready to Work with Harper";
+    const body = "Hi Harper,\n\nI'm tired of waiting and watching others succeed while I stay stuck. I'm ready to make the decision that will change everything.\n\nI want to:\n- Stop struggling with tech overwhelm\n- Finally get my digital business set up properly\n- Start generating real results like your other clients\n- Transform my confusion into consistent sales\n\nI'm ready to choose success over staying stuck. Let's make this happen!\n\nBest regards";
+    const encodedSubject = encodeURIComponent(subject);
+    const encodedBody = encodeURIComponent(body);
+    window.open(`mailto:harperharvey834@gmail.com?subject=${encodedSubject}&body=${encodedBody}`, '_blank');
   };
 
   return (
