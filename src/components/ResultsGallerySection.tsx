@@ -55,21 +55,21 @@ export function ResultsGallerySection() {
   ];
 
   return (
-    <section className="py-20 bg-background">
+    <section className="py-12 sm:py-16 lg:py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <Badge className="bg-accent text-accent-foreground mb-4 px-4 py-2">
+        <div className="text-center mb-12 sm:mb-16">
+          <Badge className="bg-accent text-accent-foreground mb-4 px-3 sm:px-4 py-2 text-sm sm:text-base">
             ✨ Trusted by 100+ Students
           </Badge>
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-4 sm:mb-6">
             Results Gallery
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
             Real results from real students. These aren't fake screenshots—these are actual notifications from Harper's students.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
           {results.map((result, index) => {
             const IconComponent = result.icon;
             return (

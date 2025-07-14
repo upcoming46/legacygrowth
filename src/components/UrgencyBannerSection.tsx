@@ -36,15 +36,15 @@ export function UrgencyBannerSection() {
   };
 
   return (
-    <section className="py-8 bg-gradient-to-r from-red-600 to-red-700 border-t-4 border-accent">
+    <section className="py-4 sm:py-6 lg:py-8 bg-gradient-to-r from-red-600 to-red-700 border-t-4 border-accent">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center animate-pulse">
-              <Flame className="h-6 w-6 text-white" />
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-6">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4 text-center sm:text-left">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-full flex items-center justify-center animate-pulse flex-shrink-0">
+              <Flame className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
             </div>
             <div>
-              <h3 className="text-xl font-serif font-bold text-white">
+              <h3 className="text-lg sm:text-xl font-serif font-bold text-white">
                 🔥 Only 3 Spots Left for July Setup
               </h3>
               <p className="text-white/90 text-sm">
@@ -53,20 +53,20 @@ export function UrgencyBannerSection() {
             </div>
           </div>
 
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-4 text-white">
-              <Clock className="h-5 w-5" />
-              <div className="flex gap-2 text-sm font-mono">
-                <div className="bg-white/20 px-2 py-1 rounded">
+          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+            <div className="flex items-center gap-2 sm:gap-4 text-white">
+              <Clock className="h-4 w-4 sm:h-5 sm:w-5" />
+              <div className="flex gap-1 sm:gap-2 text-xs sm:text-sm font-mono">
+                <div className="bg-white/20 px-1 sm:px-2 py-1 rounded text-center min-w-[2rem] sm:min-w-[2.5rem]">
                   {timeLeft.days.toString().padStart(2, '0')}d
                 </div>
-                <div className="bg-white/20 px-2 py-1 rounded">
+                <div className="bg-white/20 px-1 sm:px-2 py-1 rounded text-center min-w-[2rem] sm:min-w-[2.5rem]">
                   {timeLeft.hours.toString().padStart(2, '0')}h
                 </div>
-                <div className="bg-white/20 px-2 py-1 rounded">
+                <div className="bg-white/20 px-1 sm:px-2 py-1 rounded text-center min-w-[2rem] sm:min-w-[2.5rem]">
                   {timeLeft.minutes.toString().padStart(2, '0')}m
                 </div>
-                <div className="bg-white/20 px-2 py-1 rounded">
+                <div className="bg-white/20 px-1 sm:px-2 py-1 rounded text-center min-w-[2rem] sm:min-w-[2.5rem]">
                   {timeLeft.seconds.toString().padStart(2, '0')}s
                 </div>
               </div>
@@ -74,10 +74,11 @@ export function UrgencyBannerSection() {
 
             <Button
               onClick={handleWhatsAppClick}
-              className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold px-6 py-2 transition-all duration-300 hover:shadow-gold animate-glow-pulse"
+              className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold px-4 sm:px-6 py-2 transition-all duration-300 hover:shadow-gold animate-glow-pulse text-sm sm:text-base w-full sm:w-auto"
             >
               <MessageCircle className="mr-2 h-4 w-4" />
-              Secure My Spot
+              <span className="hidden sm:inline">Secure My Spot</span>
+              <span className="sm:hidden">Secure Spot</span>
             </Button>
           </div>
         </div>

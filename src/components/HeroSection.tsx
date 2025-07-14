@@ -26,67 +26,69 @@ export function HeroSection() {
           {/* Left Column - Content */}
           <div className="text-center lg:text-left animate-fade-in">
             {/* Success Indicators */}
-            <div className="flex justify-center lg:justify-start gap-4 mb-6">
-              <Card className="p-3 bg-white/10 border-white/20 backdrop-blur-sm">
+            <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3 sm:gap-4 mb-6">
+              <Card className="p-2 sm:p-3 bg-white/10 border-white/20 backdrop-blur-sm">
                 <div className="flex items-center gap-2 text-white">
                   <Star className="h-4 w-4 text-yellow-400" />
-                  <span className="text-sm font-medium">Digital Expert</span>
+                  <span className="text-xs sm:text-sm font-medium">Digital Expert</span>
                 </div>
               </Card>
-              <Card className="p-3 bg-white/10 border-white/20 backdrop-blur-sm">
+              <Card className="p-2 sm:p-3 bg-white/10 border-white/20 backdrop-blur-sm">
                 <div className="flex items-center gap-2 text-white">
                   <TrendingUp className="h-4 w-4 text-green-400" />
-                  <span className="text-sm font-medium">Proven Results</span>
+                  <span className="text-xs sm:text-sm font-medium">Proven Results</span>
                 </div>
               </Card>
             </div>
 
-            <h1 className="text-5xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight">
               From Stuck to{" "}
               <span className="bg-gradient-to-r from-accent to-accent/80 bg-clip-text text-transparent">
                 Sales
               </span>
             </h1>
             
-            <h2 className="text-xl lg:text-2xl text-white/90 mb-4 font-medium font-serif">
+            <h2 className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-4 font-medium font-serif">
               The Digital Shortcut That's Changing Lives
             </h2>
             
-            <p className="text-lg text-white/80 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-base sm:text-lg text-white/80 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
               Real results. Real people. Real freedom. Discover the system that's helped moms, 
               9-5 workers, and digital beginners turn confusion into consistent sales—without tech overwhelm.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
               <Button
                 size="xl"
                 variant="whatsapp"
                 onClick={handleWhatsAppClick}
-                className="group"
+                className="group text-sm sm:text-base px-4 sm:px-6 py-3 sm:py-4"
               >
-                <MessageCircle className="h-5 w-5 mr-2 group-hover:scale-110 transition-transform" />
-                Chat with Harper on WhatsApp
+                <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5 mr-2 group-hover:scale-110 transition-transform" />
+                <span className="hidden sm:inline">Chat with Harper on WhatsApp</span>
+                <span className="sm:hidden">WhatsApp Harper</span>
               </Button>
               
               <Button
                 size="xl"
                 variant="hero"
                 onClick={handleEmailClick}
-                className="group"
+                className="group text-sm sm:text-base px-4 sm:px-6 py-3 sm:py-4"
               >
-                <Mail className="h-5 w-5 mr-2 group-hover:scale-110 transition-transform" />
-                Email Harper
+                <Mail className="h-4 w-4 sm:h-5 sm:w-5 mr-2 group-hover:scale-110 transition-transform" />
+                <span className="hidden sm:inline">Email Harper</span>
+                <span className="sm:hidden">Email</span>
               </Button>
             </div>
 
             {/* Trust Indicators */}
-            <div className="mt-8 flex justify-center lg:justify-start">
-              <Card className="p-4 bg-white/10 border-white/20 backdrop-blur-sm">
-                <div className="flex items-center gap-4 text-white">
-                  <div className="flex items-center gap-1">
-                    <DollarSign className="h-4 w-4 text-green-400" />
-                    <span className="text-sm">Helping everyday people turn digital skills into passive income</span>
+            <div className="mt-6 sm:mt-8 flex justify-center lg:justify-start">
+              <Card className="p-3 sm:p-4 bg-white/10 border-white/20 backdrop-blur-sm">
+                <div className="flex items-center gap-2 sm:gap-4 text-white">
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <DollarSign className="h-4 w-4 text-green-400 flex-shrink-0" />
+                    <span className="text-xs sm:text-sm text-center lg:text-left">Helping everyday people turn digital skills into passive income</span>
                   </div>
                 </div>
               </Card>

@@ -28,18 +28,18 @@ export function WhatIfSection() {
   };
 
   return (
-    <section className="py-20 bg-gradient-luxury">
+    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-luxury">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-white mb-4 sm:mb-6">
             The Cost of Waiting
           </h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-white/80 max-w-3xl mx-auto px-4">
             Every day you delay is a day of missed opportunities. Let's flip the script.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-16">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto mb-12 sm:mb-16">
           {/* Negative Scenarios */}
           <Card className="bg-white/5 backdrop-blur-sm border-red-500/30 p-8">
             <div className="text-center mb-6">
@@ -91,24 +91,26 @@ export function WhatIfSection() {
             The difference between struggling and succeeding isn't talent or luck—it's taking action when the moment is right. That moment is now.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Button 
               size="lg"
               onClick={handleWhatsAppClick}
-              className="bg-accent text-accent-foreground hover:bg-accent/90 px-8 py-4 text-lg font-semibold transition-all duration-300 hover:shadow-gold hover:transform hover:scale-105"
+              className="bg-accent text-accent-foreground hover:bg-accent/90 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold transition-all duration-300 hover:shadow-gold hover:transform hover:scale-105"
             >
-              <MessageCircle className="mr-3 h-5 w-5" />
-              Choose Success - WhatsApp Harper
+              <MessageCircle className="mr-2 sm:mr-3 h-4 w-4 sm:h-5 sm:w-5" />
+              <span className="hidden sm:inline">Choose Success - WhatsApp Harper</span>
+              <span className="sm:hidden">WhatsApp Harper</span>
             </Button>
             
             <Button 
               size="lg"
               variant="outline"
               onClick={handleEmailClick}
-              className="border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg font-semibold transition-all duration-300"
+              className="border-white/30 text-white hover:bg-white/10 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold transition-all duration-300"
             >
-              <Mail className="mr-3 h-5 w-5" />
-              Email Harper
+              <Mail className="mr-2 sm:mr-3 h-4 w-4 sm:h-5 sm:w-5" />
+              <span className="hidden sm:inline">Email Harper</span>
+              <span className="sm:hidden">Email</span>
             </Button>
           </div>
         </div>
