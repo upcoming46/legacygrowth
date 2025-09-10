@@ -1,18 +1,21 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { TwoStepCTAModal } from "@/components/TwoStepCTAModal";
 import { MessageCircle, Mail, CheckCircle, Sparkles } from "lucide-react";
 
 export function FinalCTASection() {
+  const [showCTAModal, setShowCTAModal] = useState(false);
+  const [ctaType, setCTAType] = useState<"general" | "funnel" | "setup">("general");
+
   const handleWhatsAppClick = () => {
-    window.open("https://wa.me/+2348127297536", "_blank");
+    setCTAType("general");
+    setShowCTAModal(true);
   };
 
   const handleEmailClick = () => {
-    const subject = "Ready to Transform My Digital Business with Harper";
-    const body = "Hi Harper,\n\nI'm ready to take my digital business to the next level and start seeing real results. I've seen your work and I'm impressed with what you've achieved for others.\n\nI'd love to discuss how you can help me:\n- Set up my digital business properly\n- Stop struggling with tech overwhelm\n- Start generating consistent sales\n\nWhen would be a good time to chat?\n\nBest regards";
-    const encodedSubject = encodeURIComponent(subject);
-    const encodedBody = encodeURIComponent(body);
-    window.location.href = `mailto:harperharvey834@gmail.com?subject=${encodedSubject}&body=${encodedBody}`;
+    setCTAType("setup");
+    setShowCTAModal(true);
   };
 
   const benefits = [
@@ -141,6 +144,12 @@ export function FinalCTASection() {
           </div>
         </div>
       </div>
+      
+      <TwoStepCTAModal 
+        isOpen={showCTAModal} 
+        onClose={() => setShowCTAModal(false)}
+        ctaType={ctaType}
+      />
     </section>
   );
 }

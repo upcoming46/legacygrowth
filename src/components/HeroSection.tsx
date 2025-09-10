@@ -1,19 +1,22 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { TwoStepCTAModal } from "@/components/TwoStepCTAModal";
 import { MessageCircle, Mail, Star, TrendingUp, DollarSign } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
 
 export function HeroSection() {
+  const [showCTAModal, setShowCTAModal] = useState(false);
+  const [ctaType, setCTAType] = useState<"general" | "funnel" | "setup">("general");
+
   const handleWhatsAppClick = () => {
-    window.open("https://wa.me/+2348127297536", "_blank");
+    setCTAType("general");
+    setShowCTAModal(true);
   };
 
   const handleEmailClick = () => {
-    const subject = "Let's Turn My Digital Dreams Into Reality";
-    const body = "Hi Harper,\n\nI'm excited about the possibility of working with you to transform my digital business. I've been struggling with tech overwhelm and I'm ready for a clear path to success.\n\nI'd love to learn more about:\n- How you can help me set up my digital business\n- Your proven system for generating consistent sales\n- What results I can expect\n\nI'm ready to stop being stuck and start selling. When can we chat?\n\nBest regards";
-    const encodedSubject = encodeURIComponent(subject);
-    const encodedBody = encodeURIComponent(body);
-    window.location.href = `mailto:harperharvey834@gmail.com?subject=${encodedSubject}&body=${encodedBody}`;
+    setCTAType("setup");
+    setShowCTAModal(true);
   };
 
   return (
@@ -70,8 +73,8 @@ export function HeroSection() {
                 className="group text-sm sm:text-base px-4 sm:px-6 py-3 sm:py-4"
               >
                 <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5 mr-2 group-hover:scale-110 transition-transform" />
-                <span className="hidden sm:inline">Chat with Harper on WhatsApp</span>
-                <span className="sm:hidden">WhatsApp Harper</span>
+                <span className="hidden sm:inline">Get My Free Strategy Session</span>
+                <span className="sm:hidden">Free Strategy</span>
               </Button>
               
               <Button
@@ -81,8 +84,8 @@ export function HeroSection() {
                 className="group text-sm sm:text-base px-4 sm:px-6 py-3 sm:py-4"
               >
                 <Mail className="h-4 w-4 sm:h-5 sm:w-5 mr-2 group-hover:scale-110 transition-transform" />
-                <span className="hidden sm:inline">Email Harper</span>
-                <span className="sm:hidden">Email</span>
+                <span className="hidden sm:inline">Start My Setup</span>
+                <span className="sm:hidden">Start Setup</span>
               </Button>
             </div>
 
@@ -125,6 +128,12 @@ export function HeroSection() {
           </div>
         </div>
       </div>
+      
+      <TwoStepCTAModal 
+        isOpen={showCTAModal} 
+        onClose={() => setShowCTAModal(false)}
+        ctaType={ctaType}
+      />
     </section>
   );
 }
