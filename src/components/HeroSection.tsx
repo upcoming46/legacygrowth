@@ -112,6 +112,7 @@ export function HeroSection() {
                 width="628"
                 height="353"
                 decoding="async"
+                fetchPriority="high"
               />
               {/* Floating Success Cards */}
               <Card className="absolute -top-4 -left-4 p-3 bg-white shadow-success animate-bounce">
