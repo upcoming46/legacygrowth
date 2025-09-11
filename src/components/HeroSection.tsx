@@ -109,6 +109,9 @@ export function HeroSection() {
                 src={heroImage}
                 alt="Harper Harvey helping people achieve digital success"
                 className="w-full h-auto rounded-2xl shadow-elegant"
+                width="628"
+                height="353"
+                decoding="async"
               />
               {/* Floating Success Cards */}
               <Card className="absolute -top-4 -left-4 p-3 bg-white shadow-success animate-bounce">

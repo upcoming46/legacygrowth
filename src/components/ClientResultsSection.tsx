@@ -147,6 +147,10 @@ export function ClientResultsSection() {
                       src={testimonial.image} 
                       alt="Client result screenshot" 
                       className="w-full h-32 object-cover rounded-lg shadow-md"
+                      loading="lazy"
+                      decoding="async"
+                      width="355"
+                      height="128"
                     />
                   </div>
 

@@ -123,6 +123,10 @@ export function ResultsGallerySection() {
                       src={result.image} 
                       alt={`${result.type} result screenshot`} 
                       className="w-full h-24 object-cover rounded-lg shadow-lg opacity-90"
+                      loading="lazy"
+                      decoding="async"
+                      width="355"
+                      height="96"
                     />
                   </div>
                   
