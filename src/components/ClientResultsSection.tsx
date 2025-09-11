@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Star, DollarSign, TrendingUp, Clock, MessageSquare } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import result1 from "@/assets/client-results/result-1.jpg";
 import result2 from "@/assets/client-results/result-2.jpg";
 import result3 from "@/assets/client-results/result-3.jpg";
@@ -10,6 +10,8 @@ import result5 from "@/assets/client-results/result-5.jpg";
 export function ClientResultsSection() {
   const [popupTestimonials, setPopupTestimonials] = useState<Array<{id: number, testimonial: any, visible: boolean}>>([]);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
+  const [isInView, setIsInView] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const testimonials = [
     {
@@ -65,28 +67,29 @@ export function ClientResultsSection() {
       metric: "$256,880 balance",
       metricIcon: DollarSign,
       image: result1
-    },
-    {
-      quote: "My Stan store generated $12,747 with 3,057 visits. Harper's conversion tactics are insane!",
-      name: "David C.",
-      role: "Content Creator",
-      icon: "📈",
-      metric: "$12,747 revenue",
-      metricIcon: TrendingUp,
-      image: result2
-    },
-    {
-      quote: "From $0 to $25,639.73 in total earnings. Harper doesn't just teach, he delivers results!",
-      name: "Emma W.",
-      role: "New Entrepreneur",
-      icon: "✨",
-      metric: "$25,639.73 total",
-      metricIcon: DollarSign,
-      image: result3
     }
   ];
 
+  // Intersection Observer for performance
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Only run popup animations when section is in view
+  useEffect(() => {
+    if (!isInView) return;
+
     const interval = setInterval(() => {
       const testimonial = testimonials[testimonialIndex % testimonials.length];
       const newPopup = {
@@ -95,29 +98,33 @@ export function ClientResultsSection() {
         visible: true
       };
 
-      setPopupTestimonials(prev => [...prev, newPopup]);
+      setPopupTestimonials(prev => {
+        // Limit to max 2 popups
+        const filtered = prev.length >= 2 ? prev.slice(1) : prev;
+        return [...filtered, newPopup];
+      });
       setTestimonialIndex(prev => prev + 1);
 
-      // Remove popup after 5 seconds
+      // Remove popup after 4 seconds
       setTimeout(() => {
         setPopupTestimonials(prev => 
           prev.map(popup => 
             popup.id === newPopup.id ? { ...popup, visible: false } : popup
           )
         );
-      }, 5000);
+      }, 4000);
 
-      // Clean up hidden popups after 6 seconds
+      // Clean up hidden popups after 5 seconds
       setTimeout(() => {
         setPopupTestimonials(prev => prev.filter(popup => popup.id !== newPopup.id));
-      }, 6000);
-    }, 10000); // New popup every 10 seconds (changed from 60 seconds for demo)
+      }, 5000);
+    }, 15000); // Reduced frequency to every 15 seconds
 
     return () => clearInterval(interval);
-  }, [testimonialIndex]);
+  }, [testimonialIndex, isInView]);
 
   return (
-    <section className="py-20 bg-background">
+    <section ref={sectionRef} className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
@@ -134,12 +141,8 @@ export function ClientResultsSection() {
             return (
               <Card 
                 key={index}
-                className="p-6 hover:shadow-elegant transition-all duration-300 transform hover:scale-105 animate-fade-in group relative overflow-hidden"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="p-6 hover:shadow-elegant transition-all duration-300 group relative overflow-hidden"
               >
-                {/* Background gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-success/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
                 <div className="relative z-10">
                   {/* Result Image */}
                   <div className="mb-4">

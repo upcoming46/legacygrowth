@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp, DollarSign, Users, Eye } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
 import result1 from "@/assets/client-results/result-1.jpg";
 import result2 from "@/assets/client-results/result-2.jpg";
 import result3 from "@/assets/client-results/result-3.jpg";
@@ -8,6 +9,9 @@ import result4 from "@/assets/client-results/result-4.jpg";
 import result5 from "@/assets/client-results/result-5.jpg";
 
 export function ResultsGallerySection() {
+  const [visibleResults, setVisibleResults] = useState(6); // Show only 6 initially
+  const [isLoading, setIsLoading] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
   const results = [
     {
       type: "Cash App Balance",
@@ -92,8 +96,16 @@ export function ResultsGallerySection() {
     }
   ];
 
+  const loadMoreResults = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setVisibleResults(prev => Math.min(prev + 3, results.length));
+      setIsLoading(false);
+    }, 500);
+  };
+
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-background">
+    <section ref={sectionRef} className="py-12 sm:py-16 lg:py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 sm:mb-16">
           <Badge className="bg-accent text-accent-foreground mb-4 px-3 sm:px-4 py-2 text-sm sm:text-base">
@@ -108,12 +120,12 @@ export function ResultsGallerySection() {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
-          {results.map((result, index) => {
+          {results.slice(0, visibleResults).map((result, index) => {
             const IconComponent = result.icon;
             return (
               <Card 
                 key={index}
-                className={`bg-gradient-luxury p-6 text-white border-0 hover:transform hover:scale-105 transition-all duration-500 hover:shadow-luxury group relative overflow-hidden`}
+                className={`bg-gradient-luxury p-6 text-white border-0 hover:transform hover:scale-105 transition-all duration-300 hover:shadow-luxury group relative overflow-hidden`}
               >
                 <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full -translate-y-10 translate-x-10"></div>
                 <div className="relative z-10">
@@ -127,6 +139,10 @@ export function ResultsGallerySection() {
                       decoding="async"
                       width="355"
                       height="96"
+                      onLoad={(e) => {
+                        e.currentTarget.style.opacity = '1';
+                      }}
+                      style={{ opacity: '0', transition: 'opacity 0.3s ease' }}
                     />
                   </div>
                   
@@ -154,6 +170,18 @@ export function ResultsGallerySection() {
             );
           })}
         </div>
+
+        {visibleResults < results.length && (
+          <div className="text-center mt-8">
+            <button
+              onClick={loadMoreResults}
+              disabled={isLoading}
+              className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-lg font-semibold transition-colors disabled:opacity-50"
+            >
+              {isLoading ? 'Loading...' : `Show More Results (${results.length - visibleResults} remaining)`}
+            </button>
+          </div>
+        )}
 
         <div className="text-center mt-12">
           <p className="text-muted-foreground mb-4">
