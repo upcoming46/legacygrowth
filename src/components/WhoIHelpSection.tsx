@@ -60,7 +60,7 @@ export function WhoIHelpSection() {
           </div>
 
           <div className="text-center animate-fade-in">
-            <Card className="p-8 bg-gradient-primary text-white">
+            <Card className="p-8 bg-primary text-primary-foreground">
               <h3 className="text-2xl font-bold mb-4">
                 You're exactly who I help.
               </h3>

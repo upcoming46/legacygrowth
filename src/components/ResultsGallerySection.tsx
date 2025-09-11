@@ -159,8 +159,8 @@ export function ResultsGallerySection() {
           <p className="text-muted-foreground mb-4">
             Want to see your results here next?
           </p>
-          <div className="inline-flex items-center gap-2 text-accent font-semibold">
-            <div className="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
+          <div className="inline-flex items-center gap-2 text-primary font-semibold">
+            <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
             New results posting every day
           </div>
         </div>

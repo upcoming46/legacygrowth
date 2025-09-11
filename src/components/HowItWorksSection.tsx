@@ -75,7 +75,7 @@ export function HowItWorksSection() {
 
         {/* CTA Section */}
         <div className="text-center animate-fade-in">
-          <Card className="p-8 bg-gradient-success text-white max-w-2xl mx-auto">
+          <Card className="p-8 bg-primary text-primary-foreground max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold mb-6">
               Ready to Stop Struggling and Start Selling?
             </h3>
@@ -83,7 +83,7 @@ export function HowItWorksSection() {
               size="xl"
               variant="hero"
               onClick={handleWhatsAppClick}
-              className="bg-white text-success hover:bg-white/90"
+              className="bg-white text-foreground hover:bg-white/90"
             >
               <MessageCircle className="h-5 w-5 mr-2" />
               Book Your Setup Now via WhatsApp

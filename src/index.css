@@ -27,10 +27,10 @@ All colors MUST be HSL.
     --muted: 220 40% 95%;
     --muted-foreground: 240 15% 40%;
 
-    --accent: 45 100% 50%;
-    --accent-foreground: 240 20% 3%;
+    --accent: 40 100% 40%;
+    --accent-foreground: 0 0% 100%;
 
-    --success: 142 76% 36%;
+    --success: 135 65% 35%;
     --success-foreground: 0 0% 100%;
 
     --luxury-gold: 45 100% 50%;
