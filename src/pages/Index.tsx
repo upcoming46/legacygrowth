@@ -14,6 +14,7 @@ import { ExitIntentModal } from "@/components/ExitIntentModal";
 import { ReadingProgressBar } from "@/components/ReadingProgressBar";
 import { StickyMobileCTA } from "@/components/StickyMobileCTA";
 import { QuizModal } from "@/components/QuizModal";
+import { LazySection } from "@/components/LazySection";
 import { useExitIntent } from "@/hooks/useExitIntent";
 import { Button } from "@/components/ui/button";
 import { Brain, MessageCircle } from "lucide-react";
@@ -56,13 +57,34 @@ const Index = () => {
       </section>
 
       <PickYourPathSection />
-      <HowItWorksSection />
-      <ResultsGallerySection />
-      <ThreeStagePromiseSection />
-      <ClientResultsSection />
-      <WhatIfSection />
-      <WhyNowSection />
-      <FinalCTASection />
+      
+      <LazySection>
+        <HowItWorksSection />
+      </LazySection>
+      
+      <LazySection>
+        <ResultsGallerySection />
+      </LazySection>
+      
+      <LazySection>
+        <ThreeStagePromiseSection />
+      </LazySection>
+      
+      <LazySection>
+        <ClientResultsSection />
+      </LazySection>
+      
+      <LazySection>
+        <WhatIfSection />
+      </LazySection>
+      
+      <LazySection>
+        <WhyNowSection />
+      </LazySection>
+      
+      <LazySection>
+        <FinalCTASection />
+      </LazySection>
       
       <StickyMobileCTA />
       <ExitIntentModal 

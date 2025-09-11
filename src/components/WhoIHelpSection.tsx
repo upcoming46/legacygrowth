@@ -31,13 +31,11 @@ export function WhoIHelpSection() {
             {targetAudience.map((audience, index) => (
               <Card 
                 key={index} 
-                className="p-6 hover:shadow-elegant transition-all duration-300 transform hover:scale-105 animate-fade-in"
+                className="p-6 hover:shadow-elegant transition-all duration-300 transform hover:scale-105 animate-fade-in flex items-start gap-4"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="flex items-start gap-4">
-                  <CheckCircle className="h-6 w-6 text-success mt-1 flex-shrink-0" />
-                  <p className="text-lg text-foreground font-medium">{audience}</p>
-                </div>
+                <CheckCircle className="h-6 w-6 text-success mt-1 flex-shrink-0" />
+                <p className="text-lg text-foreground font-medium">{audience}</p>
               </Card>
             ))}
           </div>
@@ -53,12 +51,10 @@ export function WhoIHelpSection() {
             {commonPhrases.map((phrase, index) => (
               <Card 
                 key={index} 
-                className="p-6 border-l-4 border-l-primary bg-gradient-to-r from-primary/5 to-transparent hover:shadow-glow transition-all duration-300"
+                className="p-6 border-l-4 border-l-primary bg-gradient-to-r from-primary/5 to-transparent hover:shadow-glow transition-all duration-300 flex items-start gap-4"
               >
-                <div className="flex items-start gap-4">
-                  <Quote className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                  <p className="text-lg text-foreground italic">"{phrase}"</p>
-                </div>
+                <Quote className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                <p className="text-lg text-foreground italic">"{phrase}"</p>
               </Card>
             ))}
           </div>

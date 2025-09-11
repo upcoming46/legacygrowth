@@ -61,9 +61,7 @@ export function HowItWorksSection() {
                 className="p-8 text-center hover:shadow-elegant transition-all duration-300 transform hover:scale-105 animate-fade-in group"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className={`inline-flex p-4 rounded-full bg-muted mb-6 group-hover:scale-110 transition-transform ${service.color}`}>
-                  <IconComponent className="h-8 w-8" />
-                </div>
+                <IconComponent className={`h-8 w-8 inline-flex p-4 rounded-full bg-muted mb-6 group-hover:scale-110 transition-transform ${service.color}`} />
                 <h3 className="text-xl font-bold text-foreground mb-4">
                   {service.title}
                 </h3>

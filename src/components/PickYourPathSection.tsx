@@ -52,17 +52,13 @@ export function PickYourPathSection() {
                 key={index}
                 className="bg-white/10 backdrop-blur-sm border-white/20 p-8 text-center hover:bg-white/15 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-luxury group"
               >
-                <div className="mb-6">
-                  <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-accent/30 transition-colors">
-                    <IconComponent className="h-8 w-8 text-accent" />
-                  </div>
-                  <h3 className="text-xl font-serif font-semibold text-white mb-4">
-                    {path.title}
-                  </h3>
-                  <p className="text-white/70 mb-6">
-                    {path.description}
-                  </p>
-                </div>
+                <IconComponent className="h-8 w-8 text-accent w-16 h-16 bg-accent/20 rounded-full mx-auto mb-4 group-hover:bg-accent/30 transition-colors p-4" />
+                <h3 className="text-xl font-serif font-semibold text-white mb-4">
+                  {path.title}
+                </h3>
+                <p className="text-white/70 mb-6">
+                  {path.description}
+                </p>
                 
                 <Button
                   onClick={() => handleWhatsAppClick(path.whatsappMessage)}
