@@ -14,7 +14,48 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      payment_submissions: {
+        Row: {
+          amount: string
+          created_at: string
+          email: string
+          full_name: string
+          google_sheet_synced: boolean | null
+          id: string
+          package_type: string | null
+          receipt_url: string | null
+          status: string
+          updated_at: string
+          whatsapp: string | null
+        }
+        Insert: {
+          amount: string
+          created_at?: string
+          email: string
+          full_name: string
+          google_sheet_synced?: boolean | null
+          id?: string
+          package_type?: string | null
+          receipt_url?: string | null
+          status?: string
+          updated_at?: string
+          whatsapp?: string | null
+        }
+        Update: {
+          amount?: string
+          created_at?: string
+          email?: string
+          full_name?: string
+          google_sheet_synced?: boolean | null
+          id?: string
+          package_type?: string | null
+          receipt_url?: string | null
+          status?: string
+          updated_at?: string
+          whatsapp?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
