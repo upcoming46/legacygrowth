@@ -70,22 +70,20 @@ export function HeroSection() {
                 size="xl"
                 variant="whatsapp"
                 onClick={handleWhatsAppClick}
-                className="group text-sm sm:text-base px-4 sm:px-6 py-3 sm:py-4"
+                className="group text-sm sm:text-base px-4 sm:px-6 py-3 sm:py-4 shadow-lg hover:shadow-xl"
               >
                 <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5 mr-2 group-hover:scale-110 transition-transform" />
-                <span className="hidden sm:inline">Get My Free Strategy Session</span>
-                <span className="sm:hidden">Free Strategy</span>
+                <span className="hidden sm:inline">Start Your Transformation</span>
+                <span className="sm:hidden">Get Started</span>
               </Button>
               
               <Button
                 size="xl"
-                variant="hero"
-                onClick={handleEmailClick}
-                className="group text-sm sm:text-base px-4 sm:px-6 py-3 sm:py-4"
+                className="group text-sm sm:text-base px-4 sm:px-6 py-3 sm:py-4 bg-accent text-accent-foreground hover:bg-accent/90 shadow-gold hover:shadow-glow"
               >
                 <Mail className="h-4 w-4 sm:h-5 sm:w-5 mr-2 group-hover:scale-110 transition-transform" />
-                <span className="hidden sm:inline">Start My Setup</span>
-                <span className="sm:hidden">Start Setup</span>
+                <span className="hidden sm:inline">Book Your Setup</span>
+                <span className="sm:hidden">Book Setup</span>
               </Button>
             </div>
 

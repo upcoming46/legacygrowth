@@ -62,10 +62,10 @@ export function PickYourPathSection() {
                 
                 <Button
                   onClick={() => handleWhatsAppClick(path.whatsappMessage)}
-                  className="w-full bg-accent text-accent-foreground hover:bg-accent/90 font-semibold py-3 transition-all duration-300 hover:shadow-gold"
+                  className="w-full bg-accent text-accent-foreground hover:bg-accent/90 font-bold py-3 transition-all duration-300 hover:shadow-gold shadow-lg hover:scale-105"
                 >
                   <MessageCircle className="mr-2 h-4 w-4" />
-                  Start This Path
+                  Get Started Now
                 </Button>
               </Card>
             );

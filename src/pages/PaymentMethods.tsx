@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
-import { Lock, Shield, CheckCircle2, ArrowRight, Upload, MessageCircle, CreditCard, DollarSign, Bitcoin, ExternalLink } from "lucide-react";
+import { Lock, Shield, CheckCircle2, ArrowRight, Upload, MessageCircle, CreditCard, DollarSign, Bitcoin, ExternalLink, Copy, Check } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { z } from "zod";
@@ -25,6 +25,8 @@ export default function PaymentMethods() {
   const [showUnavailableModal, setShowUnavailableModal] = useState(false);
   const [selectedAmount, setSelectedAmount] = useState("$20");
   const [customAmount, setCustomAmount] = useState("");
+  const [copiedAccount, setCopiedAccount] = useState(false);
+  const [copiedBank, setCopiedBank] = useState(false);
   const [formData, setFormData] = useState({
     full_name: "",
     email: "",
@@ -38,6 +40,22 @@ export default function PaymentMethods() {
 
   const scrollToUploadForm = () => {
     uploadFormRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const copyToClipboard = async (text: string, type: 'account' | 'bank') => {
+    try {
+      await navigator.clipboard.writeText(text);
+      if (type === 'account') {
+        setCopiedAccount(true);
+        setTimeout(() => setCopiedAccount(false), 2000);
+      } else {
+        setCopiedBank(true);
+        setTimeout(() => setCopiedBank(false), 2000);
+      }
+      toast.success("Copied to clipboard!");
+    } catch (err) {
+      toast.error("Failed to copy");
+    }
   };
 
   const handleWhatsAppClick = () => {
@@ -258,11 +276,42 @@ export default function PaymentMethods() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="bg-muted p-4 rounded-lg space-y-2">
+                <div className="bg-muted p-4 rounded-lg space-y-3 border border-border">
                   <p className="text-foreground font-semibold">Bank Details:</p>
-                  <p className="text-foreground text-sm">Account Name: <span className="font-semibold">Nosirudeen Adebayo</span></p>
-                  <p className="text-foreground text-sm">Bank: <span className="font-semibold">Opay Bank</span></p>
-                  <p className="text-foreground text-sm">Account Number: <span className="font-semibold">8027161624</span></p>
+                  <div>
+                    <p className="text-muted-foreground text-xs mb-1">Account Name</p>
+                    <p className="text-foreground font-semibold">Nosirudeen Adebayo</p>
+                  </div>
+                  <div>
+                    <p className="text-muted-foreground text-xs mb-1">Bank Name</p>
+                    <div className="flex items-center gap-2">
+                      <p className="text-foreground font-semibold">Opay Bank</p>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={() => copyToClipboard("Opay Bank", "bank")}
+                        className="h-7 px-2"
+                      >
+                        {copiedBank ? <Check className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
+                      </Button>
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-muted-foreground text-xs mb-1">Account Number</p>
+                    <div className="flex items-center gap-2">
+                      <p className="text-foreground font-semibold text-lg">8027161624</p>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={() => copyToClipboard("8027161624", "account")}
+                        className="h-7 px-2"
+                      >
+                        {copiedAccount ? <Check className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
+                      </Button>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="text-muted-foreground text-sm space-y-2">

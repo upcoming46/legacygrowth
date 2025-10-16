@@ -94,20 +94,19 @@ export function FinalCTASection() {
                 size="xl"
                 variant="whatsapp"
                 onClick={handleWhatsAppClick}
-                className="group shadow-success"
+                className="group shadow-lg hover:shadow-xl"
               >
                 <MessageCircle className="h-6 w-6 mr-3 group-hover:scale-110 transition-transform" />
-                Message Harper on WhatsApp Now
+                Start Your Transformation Now
               </Button>
               
               <Button
                 size="xl"
-                variant="hero"
                 onClick={handleEmailClick}
-                className="group bg-white text-primary hover:bg-white/90"
+                className="group bg-accent text-accent-foreground hover:bg-accent/90 shadow-gold hover:shadow-glow"
               >
                 <Mail className="h-6 w-6 mr-3 group-hover:scale-110 transition-transform" />
-                Email Harper Directly
+                Book Your Setup Today
               </Button>
             </div>
 

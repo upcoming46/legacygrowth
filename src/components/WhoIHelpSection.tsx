@@ -21,8 +21,11 @@ export function WhoIHelpSection() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Who This Is For
+            If You've Bought DWA But Feel Stuck...
           </h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Here's how to get unstuck in 72 hours and start seeing real results
+          </p>
         </div>
 
         <div className="max-w-4xl mx-auto">
