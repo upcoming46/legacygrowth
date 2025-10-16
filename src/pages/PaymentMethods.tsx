@@ -243,26 +243,26 @@ export default function PaymentMethods() {
           {/* Payment Options */}
           <div className="grid md:grid-cols-2 gap-6 mb-12">
             {/* Bank Transfer - Recommended */}
-            <Card className="bg-gradient-to-br from-luxury-gold/20 to-luxury-gold/5 border-luxury-gold shadow-luxury hover:shadow-luxury-glow transition-all">
+            <Card className="bg-background border-luxury-gold shadow-luxury hover:shadow-luxury-glow transition-all">
               <CardHeader>
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-2xl">🇳🇬</span>
-                  <CardTitle className="text-white">Bank Transfer (Recommended)</CardTitle>
+                  <CardTitle className="text-foreground">Bank Transfer (Recommended)</CardTitle>
                 </div>
                 <CardDescription className="text-luxury-gold font-semibold">
                   Instant Start • Most Popular
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="bg-white/10 p-4 rounded-lg space-y-2">
-                  <p className="text-white font-semibold">Bank Details:</p>
-                  <p className="text-white/90 text-sm">Account Name: <span className="font-semibold">Nosirudeen Adebayo</span></p>
-                  <p className="text-white/90 text-sm">Bank: <span className="font-semibold">Opay Bank</span></p>
-                  <p className="text-white/90 text-sm">Account Number: <span className="font-semibold">8027161624</span></p>
+                <div className="bg-muted p-4 rounded-lg space-y-2">
+                  <p className="text-foreground font-semibold">Bank Details:</p>
+                  <p className="text-foreground text-sm">Account Name: <span className="font-semibold">Nosirudeen Adebayo</span></p>
+                  <p className="text-foreground text-sm">Bank: <span className="font-semibold">Opay Bank</span></p>
+                  <p className="text-foreground text-sm">Account Number: <span className="font-semibold">8027161624</span></p>
                 </div>
 
-                <div className="text-white/80 text-sm space-y-2">
-                  <p className="font-semibold text-white">Why Bank Transfer?</p>
+                <div className="text-muted-foreground text-sm space-y-2">
+                  <p className="font-semibold text-foreground">Why Bank Transfer?</p>
                   <ul className="list-disc list-inside space-y-1">
                     <li>Instant verification</li>
                     <li>No international fees</li>
@@ -271,8 +271,8 @@ export default function PaymentMethods() {
                   </ul>
                 </div>
 
-                <div className="text-white/80 text-sm space-y-2">
-                  <p className="font-semibold text-white">How to Pay (4 Easy Steps):</p>
+                <div className="text-muted-foreground text-sm space-y-2">
+                  <p className="font-semibold text-foreground">How to Pay (4 Easy Steps):</p>
                   <ol className="list-decimal list-inside space-y-1">
                     <li>Open your banking app</li>
                     <li>Transfer to account above</li>
@@ -363,22 +363,22 @@ export default function PaymentMethods() {
           </div>
 
           {/* Remitly Section */}
-          <Card className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 border-blue-500/30 mb-8">
+          <Card className="bg-background border-blue-500/30 mb-8">
             <CardHeader>
-              <CardTitle className="text-white">Prefer International Transfer?</CardTitle>
-              <CardDescription className="text-white/80">
+              <CardTitle className="text-foreground">Prefer International Transfer?</CardTitle>
+              <CardDescription className="text-muted-foreground">
                 Use Remitly - Fast, Safe & Trusted by Our Global Clients
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <p className="text-white/90">
+              <p className="text-foreground">
                 You can send your payment safely using Remitly — it's the fastest and most reliable 
                 global payment app for our clients.
               </p>
               
-              <div className="bg-white/10 p-4 rounded-lg space-y-2">
-                <p className="text-white font-semibold">How to Use Remitly:</p>
-                <ol className="list-decimal list-inside space-y-2 text-white/90 text-sm">
+              <div className="bg-muted p-4 rounded-lg space-y-2">
+                <p className="text-foreground font-semibold">How to Use Remitly:</p>
+                <ol className="list-decimal list-inside space-y-2 text-muted-foreground text-sm">
                   <li>If you have the app, open it and send to our account (shared on WhatsApp)</li>
                   <li>If you don't have it, download Remitly (takes 2 minutes)</li>
                   <li>Send your payment using the app</li>
@@ -396,7 +396,7 @@ export default function PaymentMethods() {
 
               {/* Testimonials */}
               <div className="space-y-3 mt-6">
-                <p className="text-white font-semibold">What Our Clients Say:</p>
+                <p className="text-foreground font-semibold">What Our Clients Say:</p>
                 {[
                   {
                     name: "Grace O.",
@@ -411,13 +411,13 @@ export default function PaymentMethods() {
                     text: "This is the best payment method I have used. I was scared at first, but I am glad I tried it. It is safe and simple!"
                   }
                 ].map((testimonial, idx) => (
-                  <div key={idx} className="bg-white/5 p-3 rounded-lg">
+                  <div key={idx} className="bg-muted p-3 rounded-lg">
                     <div className="flex items-center gap-1 mb-2">
                       {[...Array(5)].map((_, i) => (
                         <span key={i} className="text-yellow-400">⭐</span>
                       ))}
                     </div>
-                    <p className="text-white/80 text-sm italic">"{testimonial.text}"</p>
+                    <p className="text-muted-foreground text-sm italic">"{testimonial.text}"</p>
                     <p className="text-luxury-gold text-xs mt-2">— {testimonial.name}</p>
                   </div>
                 ))}

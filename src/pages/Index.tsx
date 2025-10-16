@@ -17,16 +17,39 @@ import { QuizModal } from "@/components/QuizModal";
 import { LazySection } from "@/components/LazySection";
 import { useExitIntent } from "@/hooks/useExitIntent";
 import { Button } from "@/components/ui/button";
-import { Brain, MessageCircle } from "lucide-react";
+import { Brain, MessageCircle, CreditCard } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
   const { shouldShow: showExitIntent, resetExitIntent } = useExitIntent();
   const [showQuiz, setShowQuiz] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen">
       <ReadingProgressBar />
       <UrgencyBannerSection />
+      
+      {/* Payment CTA Banner */}
+      <section className="sticky top-0 z-40 bg-gradient-luxury border-b border-luxury-gold/30 shadow-luxury">
+        <div className="container mx-auto px-4 py-3">
+          <div className="flex items-center justify-between flex-wrap gap-3">
+            <div className="flex items-center gap-3">
+              <CreditCard className="w-5 h-5 text-luxury-gold" />
+              <p className="text-white font-semibold text-sm md:text-base">
+                Ready to secure your spot? Multiple payment options available!
+              </p>
+            </div>
+            <Button
+              onClick={() => navigate('/payment-methods')}
+              className="bg-luxury-gold text-luxury-black hover:bg-luxury-gold/90 font-bold px-6 py-2 shadow-gold"
+            >
+              Make Payment Now
+            </Button>
+          </div>
+        </div>
+      </section>
+      
       <HeroSection />
       <WhoIHelpSection />
       
