@@ -1,4 +1,5 @@
 import { SEOHead } from "@/components/SEOHead";
+import { TrustedLogosSection } from "@/components/TrustedLogosSection";
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -239,6 +240,9 @@ export default function PaymentMethods() {
               </div>
             </CardContent>
           </Card>
+
+          {/* Trust Logos Section */}
+          <TrustedLogosSection />
 
           {/* Payment Options */}
           <div className="grid md:grid-cols-2 gap-6 mb-12">

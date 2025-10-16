@@ -3,6 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Flame, Clock, MessageCircle } from "lucide-react";
 
 export function UrgencyBannerSection() {
+  // Get current month name
+  const getCurrentMonth = () => {
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 
+                    'July', 'August', 'September', 'October', 'November', 'December'];
+    return months[new Date().getMonth()];
+  };
+
   const [timeLeft, setTimeLeft] = useState({
     days: 2,
     hours: 14,
@@ -30,7 +37,8 @@ export function UrgencyBannerSection() {
   }, []);
 
   const handleWhatsAppClick = () => {
-    const message = "Hey Harper, I saw there are only 3 spots left for July setup! I don't want to miss out. Can we get my store ready to sell in 72 hours?";
+    const currentMonth = getCurrentMonth();
+    const message = `Hey Harper, I saw there are only 3 spots left for ${currentMonth} setup! I don't want to miss out. Can we get my store ready to sell in 72 hours?`;
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/+2348127297536?text=${encodedMessage}`, '_blank');
   };
@@ -42,7 +50,7 @@ export function UrgencyBannerSection() {
           <Flame className="h-8 w-8 sm:h-10 sm:w-10 text-white animate-pulse flex-shrink-0 bg-white/20 rounded-full p-2" />
           <div>
             <h3 className="text-lg sm:text-xl font-serif font-bold text-white">
-              🔥 Only 3 Spots Left for July Setup
+              🔥 Only 3 Spots Left for {getCurrentMonth()} Setup
             </h3>
             <p className="text-white/90 text-sm">
               Get your store ready to sell in 72 hours. Secure your spot today.

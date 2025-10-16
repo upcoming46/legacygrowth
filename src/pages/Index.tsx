@@ -15,6 +15,7 @@ import { ReadingProgressBar } from "@/components/ReadingProgressBar";
 import { StickyMobileCTA } from "@/components/StickyMobileCTA";
 import { QuizModal } from "@/components/QuizModal";
 import { LazySection } from "@/components/LazySection";
+import { TrustedLogosSection } from "@/components/TrustedLogosSection";
 import { useExitIntent } from "@/hooks/useExitIntent";
 import { Button } from "@/components/ui/button";
 import { Brain, MessageCircle, CreditCard } from "lucide-react";
@@ -51,6 +52,7 @@ const Index = () => {
       </section>
       
       <HeroSection />
+      <TrustedLogosSection />
       <WhoIHelpSection />
       
       {/* Quiz CTA Section */}
