@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
-import { CheckCircle, Quote } from "lucide-react";
+import { CheckCircle, Quote, PlayCircle } from "lucide-react";
+import { YouTubeEmbed } from "./YouTubeEmbed";
 
 export function WhoIHelpSection() {
   const targetAudience = [
@@ -70,6 +71,32 @@ export function WhoIHelpSection() {
               <p className="text-lg opacity-90">
                 No more confusion. No more overwhelm. Just a clear path to digital success.
               </p>
+            </Card>
+          </div>
+
+          {/* Video Section */}
+          <div className="mt-12 animate-fade-in">
+            <Card className="p-6 bg-muted/50">
+              <div className="flex items-center justify-center gap-2 mb-6">
+                <PlayCircle className="h-6 w-6 text-primary" />
+                <p className="text-lg font-semibold text-foreground">
+                  Watch These Videos First - See Real Results
+                </p>
+              </div>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <YouTubeEmbed 
+                    videoId="fRdLIwBhV9Q" 
+                    title="Client Success Story 1"
+                  />
+                </div>
+                <div>
+                  <YouTubeEmbed 
+                    videoId="MK_aw0MLazU" 
+                    title="Client Success Story 2"
+                  />
+                </div>
+              </div>
             </Card>
           </div>
         </div>

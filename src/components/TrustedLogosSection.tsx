@@ -7,6 +7,8 @@ import fiverrLogo from "@/assets/logos/fiverr.png";
 import googleLogo from "@/assets/logos/google.png";
 import paypalLogo from "@/assets/logos/paypal.png";
 import stripeLogo from "@/assets/logos/stripe.png";
+import skoolLogo from "@/assets/logos/skool.png";
+import beaconsLogo from "@/assets/logos/beacons.png";
 
 export function TrustedLogosSection() {
   const logos = [
@@ -19,6 +21,8 @@ export function TrustedLogosSection() {
     { src: googleLogo, alt: "Google" },
     { src: paypalLogo, alt: "PayPal" },
     { src: stripeLogo, alt: "Stripe" },
+    { src: skoolLogo, alt: "Skool" },
+    { src: beaconsLogo, alt: "Beacons" },
   ];
 
   // Duplicate logos for seamless loop
