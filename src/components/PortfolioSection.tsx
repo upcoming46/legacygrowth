@@ -14,6 +14,8 @@ import template16 from "@/assets/templates/template16.webp";
 import template18 from "@/assets/templates/template18.webp";
 import dwaTemplate from "@/assets/templates/dwa-template.png";
 import oralHealthTemplate from "@/assets/templates/oral-health-template.png";
+import legacyBuilderTemplate from "@/assets/templates/legacy-builder-template.png";
+import goldenStrategiesTemplate from "@/assets/templates/golden-strategies-template.png";
 
 export function PortfolioSection() {
   const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null);
@@ -31,6 +33,8 @@ export function PortfolioSection() {
     { src: template18, alt: "Podcast Store", category: "Media" },
     { src: dwaTemplate, alt: "Digital Academy Store", category: "Education" },
     { src: oralHealthTemplate, alt: "Health & Wellness Store", category: "Health" },
+    { src: legacyBuilderTemplate, alt: "Digital Business Blueprint Store", category: "Business" },
+    { src: goldenStrategiesTemplate, alt: "Marketing Strategies Store", category: "Marketing" },
   ];
 
   return (
