@@ -2,6 +2,7 @@ import { useState } from "react";
 import { HeroSection } from "@/components/HeroSection";
 import { WhoIHelpSection } from "@/components/WhoIHelpSection";
 import { PickYourPathSection } from "@/components/PickYourPathSection";
+import { PortfolioSection } from "@/components/PortfolioSection";
 import { HowItWorksSection } from "@/components/HowItWorksSection";
 import { ResultsGallerySection } from "@/components/ResultsGallerySection";
 import { ClientResultsSection } from "@/components/ClientResultsSection";
@@ -57,6 +58,10 @@ const Index = () => {
       <HeroSection />
       <TrustedLogosSection />
       <WhoIHelpSection />
+      
+      <LazySection>
+        <PortfolioSection />
+      </LazySection>
       
       {/* Quiz CTA Section */}
       <section className="py-16 bg-gradient-luxury">
