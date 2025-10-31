@@ -6,6 +6,7 @@ import { PortfolioSection } from "@/components/PortfolioSection";
 import { HowItWorksSection } from "@/components/HowItWorksSection";
 import { ResultsGallerySection } from "@/components/ResultsGallerySection";
 import { ClientResultsSection } from "@/components/ClientResultsSection";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { ThreeStagePromiseSection } from "@/components/ThreeStagePromiseSection";
 import { WhatIfSection } from "@/components/WhatIfSection";
 import { UrgencyBannerSection } from "@/components/UrgencyBannerSection";
@@ -105,6 +106,10 @@ const Index = () => {
       
       <LazySection>
         <ClientResultsSection />
+      </LazySection>
+      
+      <LazySection>
+        <TestimonialsSection />
       </LazySection>
       
       <LazySection>
