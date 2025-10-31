@@ -1,13 +1,28 @@
 import { Card } from "@/components/ui/card";
-import { Quote } from "lucide-react";
+import { Quote, Maximize2 } from "lucide-react";
 import florenceTestimonial from "@/assets/testimonials/florence-testimonial.png";
 import lyndseyTestimonial from "@/assets/testimonials/lyndsey-testimonial.png";
 import anneTestimonial from "@/assets/testimonials/anne-testimonial.png";
 import angelaTestimonial from "@/assets/testimonials/angela-testimonial.png";
 import roseTestimonial from "@/assets/testimonials/rose-testimonial.png";
+import stellaTestimonial from "@/assets/testimonials/stella-testimonial.png";
+import sodiTestimonial from "@/assets/testimonials/sodi-testimonial.png";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 export function TestimonialsSection() {
   const testimonials = [
+    {
+      image: stellaTestimonial,
+      name: "Stella Matins",
+      highlight: "4 Sales in Two Weeks 💪",
+      preview: "When I joined Digital Wealth Academy, I made a decision to believe in myself and take action. What Harper built for me wasn't just a website it was a real business system. The funnel does the talking, and the marketing drives traffic daily. I've made sales even while sleeping..."
+    },
+    {
+      image: sodiTestimonial,
+      name: "Sodi Gold",
+      highlight: "Stay-At-Home Mom Turned Digital Earner",
+      preview: "I joined Harper's mentorship with no tech skills at all. Today, I'm running my own digital store, making weekly sales and even teaching others how to start. Harper made everything simple and gave me the confidence I never had before..."
+    },
     {
       image: florenceTestimonial,
       name: "Florence Lillin",
@@ -86,19 +101,32 @@ export function TestimonialsSection() {
                 </div>
 
                 {/* Full Screenshot - Clickable */}
-                <div className="relative group cursor-pointer">
-                  <img
-                    src={testimonial.image}
-                    alt={`${testimonial.name} testimonial`}
-                    className="w-full h-auto rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 border border-border"
-                    onClick={() => window.open(testimonial.image, '_blank')}
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300 rounded-lg flex items-center justify-center">
-                    <span className="opacity-0 group-hover:opacity-100 bg-primary text-primary-foreground px-4 py-2 rounded-lg font-semibold transition-opacity duration-300">
-                      View Full Size
-                    </span>
-                  </div>
-                </div>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <div className="relative group cursor-pointer">
+                      <img
+                        src={testimonial.image}
+                        alt={`${testimonial.name} testimonial`}
+                        className="w-full h-auto rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 border border-border"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 rounded-lg flex items-center justify-center">
+                        <span className="opacity-0 group-hover:opacity-100 bg-primary text-primary-foreground px-4 py-2 rounded-lg font-semibold transition-opacity duration-300 flex items-center gap-2">
+                          <Maximize2 className="w-4 h-4" />
+                          View Full Size
+                        </span>
+                      </div>
+                    </div>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-4xl max-h-[90vh] p-2">
+                    <div className="overflow-auto max-h-[85vh]">
+                      <img
+                        src={testimonial.image}
+                        alt={`${testimonial.name} full testimonial`}
+                        className="w-full h-auto"
+                      />
+                    </div>
+                  </DialogContent>
+                </Dialog>
               </div>
             </Card>
           ))}
