@@ -5,7 +5,7 @@ import { PickYourPathSection } from "@/components/PickYourPathSection";
 import { PortfolioSection } from "@/components/PortfolioSection";
 import { HowItWorksSection } from "@/components/HowItWorksSection";
 import { ResultsGallerySection } from "@/components/ResultsGallerySection";
-
+import { SEOHead } from "@/components/SEOHead";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { ThreeStagePromiseSection } from "@/components/ThreeStagePromiseSection";
 import { WhatIfSection } from "@/components/WhatIfSection";
@@ -21,6 +21,9 @@ import { TrustedLogosSection } from "@/components/TrustedLogosSection";
 import { FAQSection } from "@/components/FAQSection";
 import { ContactFormModal } from "@/components/ContactFormModal";
 import { useExitIntent } from "@/hooks/useExitIntent";
+import { useHolidayTheme } from "@/hooks/useHolidayTheme";
+import { HolidayBanner } from "@/components/HolidayBanner";
+import { HolidayOfferCard } from "@/components/HolidayOfferCard";
 import { Button } from "@/components/ui/button";
 import { Brain, MessageCircle, CreditCard } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -29,11 +32,17 @@ const Index = () => {
   const { shouldShow: showExitIntent, resetExitIntent } = useExitIntent();
   const [showQuiz, setShowQuiz] = useState(false);
   const [showContactForm, setShowContactForm] = useState(false);
+  const { currentHoliday } = useHolidayTheme();
   const navigate = useNavigate();
 
   return (
     <div className="min-h-screen">
+      <SEOHead />
       <ReadingProgressBar />
+      
+      {/* Holiday Banner - Shows at top when holiday is active */}
+      <HolidayBanner />
+      
       <UrgencyBannerSection />
       
       {/* Payment CTA Banner */}
@@ -91,6 +100,25 @@ const Index = () => {
       </section>
 
       <PickYourPathSection />
+
+      {/* Holiday Special Offer - Shows when holiday is active */}
+      {currentHoliday && (
+        <LazySection>
+          <section className="py-16 px-4 bg-gradient-to-br from-background via-muted/30 to-background">
+            <div className="container max-w-4xl mx-auto">
+              <div className="text-center mb-8">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                  {currentHoliday.decorations.icon} Limited Time {currentHoliday.name} Offer {currentHoliday.decorations.icon}
+                </h2>
+                <p className="text-lg text-muted-foreground">
+                  Celebrate {currentHoliday.name} with exclusive savings on all digital business setups!
+                </p>
+              </div>
+              <HolidayOfferCard onCTAClick={() => setShowContactForm(true)} />
+            </div>
+          </section>
+        </LazySection>
+      )}
       
       <LazySection>
         <HowItWorksSection />
