@@ -9,9 +9,9 @@ interface SEOHeadProps {
 }
 
 export function SEOHead({ 
-  title = "Harper Harvey | From Stuck to Sales - Digital Success Expert",
-  description = "Turn digital confusion into consistent sales with Harper Harvey's proven 3-stage system. Join 100+ students earning $424+ overnight. Beacons, Instagram, sales funnels setup in 72 hours.",
-  keywords = "digital success, passive income, online business setup, sales funnel, Beacons, Instagram marketing, Harper Harvey, digital entrepreneur",
+  title = "Harper Harvey | Digital Marketing Expert - Make Money Online",
+  description = "Learn how digital marketing works and start earning from home. Discover if digital marketing can make you rich with proven strategies. Digital marketing courses, jobs, and certification that work. Join 2.7M+ customers.",
+  keywords = "digital marketing jobs, digital marketing courses, how digital marketing works, can digital marketing make you rich, digital marketing from home, digital marketing make money, digital marketing certification, digital marketing agency, digital marketing career, digital marketing beginner, Harper Harvey",
   image = "/assets/hero-image.jpg",
   url = "https://harperharvey.com"
 }: SEOHeadProps) {

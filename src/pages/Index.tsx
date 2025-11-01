@@ -5,7 +5,7 @@ import { PickYourPathSection } from "@/components/PickYourPathSection";
 import { PortfolioSection } from "@/components/PortfolioSection";
 import { HowItWorksSection } from "@/components/HowItWorksSection";
 import { ResultsGallerySection } from "@/components/ResultsGallerySection";
-import { ClientResultsSection } from "@/components/ClientResultsSection";
+
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { ThreeStagePromiseSection } from "@/components/ThreeStagePromiseSection";
 import { WhatIfSection } from "@/components/WhatIfSection";
@@ -102,10 +102,6 @@ const Index = () => {
       
       <LazySection>
         <ThreeStagePromiseSection />
-      </LazySection>
-      
-      <LazySection>
-        <ClientResultsSection />
       </LazySection>
       
       <LazySection>
