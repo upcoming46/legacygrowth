@@ -37,8 +37,8 @@ export function TrustedLogosSection() {
     { src: beaconsLogo, alt: "Beacons" },
   ];
 
-  // Duplicate logos for seamless loop
-  const duplicatedLogos = [...logos, ...logos];
+  // Triple the logos for seamless infinite loop
+  const duplicatedLogos = [...logos, ...logos, ...logos];
 
   return (
     <div className="py-8 bg-muted/50 overflow-hidden">
@@ -46,12 +46,12 @@ export function TrustedLogosSection() {
         <h3 className="text-center text-sm font-semibold text-muted-foreground mb-6">
           Trusted By Over 2.7 Million Customers
         </h3>
-        <div className="relative">
-          <div className="flex animate-scroll-logos">
+        <div className="relative w-full overflow-hidden">
+          <div className="flex animate-scroll-logos w-max">
             {duplicatedLogos.map((logo, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 mx-8 flex items-center justify-center"
+                className="flex-shrink-0 mx-6 md:mx-8 flex items-center justify-center min-w-[100px] md:min-w-[120px]"
               >
                 <img
                   src={logo.src}
