@@ -9,9 +9,9 @@ interface SEOHeadProps {
 }
 
 export function SEOHead({ 
-  title = "Legacy Growth | Harper Harvey - Digital Marketing Expert & Course Creator",
-  description = "Learn how digital marketing works and start earning from home with Legacy Growth. Discover if digital marketing can make you rich with proven strategies. Digital marketing courses, jobs, and certification that work. Join 2.7M+ customers.",
-  keywords = "Legacy Growth, Harper Harvey, digital marketing jobs, digital marketing courses, how digital marketing works, can digital marketing make you rich, digital marketing from home, digital marketing make money, digital marketing certification, digital marketing agency, digital marketing career, digital marketing beginner, how to promote course online, digital marketing expert",
+  title = "Legacy Growth | Harper Harvey - Digital Marketing Sales & Funnel Setup Expert",
+  description = "Expert help for digital marketers to get more sales. Professional course promotion, store setup, sales funnel optimization, and Instagram marketing. Turn your digital products into consistent sales. 100+ students earning $424+ overnight with our proven setup system.",
+  keywords = "Legacy Growth, Harper Harvey, digital marketing sales help, course promotion services, sales funnel setup, digital marketing store setup, increase course sales, funnel optimization, how to promote course online, digital marketing consultant, Instagram marketing setup, Beacons store setup, course sales strategy, digital product promotion, marketing automation setup",
   image = "/assets/hero-image.jpg",
   url = "https://legacygrowth.site"
 }: SEOHeadProps) {
