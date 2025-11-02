@@ -4,31 +4,31 @@ import { YouTubeEmbed } from "./YouTubeEmbed";
 import { useState, useEffect } from "react";
 
 export function WhoIHelpSection() {
-  const courseNames = [
-    "DWA",
-    "UBC",
-    "DBA",
-    "SWC 2.0",
-    "LEGACY BUILDER PROGRAM",
-    "DBC",
-    "PTP ELITE",
-    "ALIEN AI",
-    "RBA",
-    "ROAD MAP",
-    "DIGITAL PRODUCT",
-    "DIGITAL MARKETING",
-    "THREAD TO MILLIONS"
+  const courses = [
+    { name: "DWA", color: "text-blue-500" },
+    { name: "UBC", color: "text-purple-500" },
+    { name: "DBA", color: "text-pink-500" },
+    { name: "SWC 2.0", color: "text-red-500" },
+    { name: "LEGACY BUILDER PROGRAM", color: "text-orange-500" },
+    { name: "DBC", color: "text-yellow-500" },
+    { name: "PTP ELITE", color: "text-green-500" },
+    { name: "ALIEN AI", color: "text-teal-500" },
+    { name: "RBA", color: "text-cyan-500" },
+    { name: "ROAD MAP", color: "text-indigo-500" },
+    { name: "DIGITAL PRODUCT", color: "text-violet-500" },
+    { name: "DIGITAL MARKETING", color: "text-fuchsia-500" },
+    { name: "THREAD TO MILLIONS", color: "text-rose-500" }
   ];
 
   const [currentCourseIndex, setCurrentCourseIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentCourseIndex((prevIndex) => (prevIndex + 1) % courseNames.length);
+      setCurrentCourseIndex((prevIndex) => (prevIndex + 1) % courses.length);
     }, 2000); // Change every 2 seconds
 
     return () => clearInterval(interval);
-  }, [courseNames.length]);
+  }, [courses.length]);
   const targetAudience = [
     "Side hustle moms ready to show their kids what freedom looks like",
     "9-5 workers tired of surviving paycheck to paycheck", 
@@ -49,8 +49,8 @@ export function WhoIHelpSection() {
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
             If You've Bought{" "}
-            <span className="text-primary transition-all duration-500">
-              {courseNames[currentCourseIndex]}
+            <span className={`${courses[currentCourseIndex].color} transition-all duration-500 font-extrabold`}>
+              {courses[currentCourseIndex].name}
             </span>{" "}
             But Feel Stuck...
           </h2>
