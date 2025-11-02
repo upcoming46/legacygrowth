@@ -1,8 +1,34 @@
 import { Card } from "@/components/ui/card";
 import { CheckCircle, Quote, PlayCircle } from "lucide-react";
 import { YouTubeEmbed } from "./YouTubeEmbed";
+import { useState, useEffect } from "react";
 
 export function WhoIHelpSection() {
+  const courseNames = [
+    "DWA",
+    "UBC",
+    "DBA",
+    "SWC 2.0",
+    "LEGACY BUILDER PROGRAM",
+    "DBC",
+    "PTP ELITE",
+    "ALIEN AI",
+    "RBA",
+    "ROAD MAP",
+    "DIGITAL PRODUCT",
+    "DIGITAL MARKETING",
+    "THREAD TO MILLIONS"
+  ];
+
+  const [currentCourseIndex, setCurrentCourseIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentCourseIndex((prevIndex) => (prevIndex + 1) % courseNames.length);
+    }, 2000); // Change every 2 seconds
+
+    return () => clearInterval(interval);
+  }, [courseNames.length]);
   const targetAudience = [
     "Side hustle moms ready to show their kids what freedom looks like",
     "9-5 workers tired of surviving paycheck to paycheck", 
@@ -22,7 +48,11 @@ export function WhoIHelpSection() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            If You've Bought DWA But Feel Stuck...
+            If You've Bought{" "}
+            <span className="text-primary transition-all duration-500">
+              {courseNames[currentCourseIndex]}
+            </span>{" "}
+            But Feel Stuck...
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Here's how to get unstuck in 72 hours and start seeing real results
