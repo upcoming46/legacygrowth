@@ -9,11 +9,11 @@ interface SEOHeadProps {
 }
 
 export function SEOHead({ 
-  title = "HarperBuilt | Harper Harvey - Digital Marketing Expert & Course Creator",
-  description = "Learn how digital marketing works and start earning from home with HarperBuilt. Discover if digital marketing can make you rich with proven strategies. Digital marketing courses, jobs, and certification that work. Join 2.7M+ customers.",
-  keywords = "HarperBuilt, Harper Harvey, digital marketing jobs, digital marketing courses, how digital marketing works, can digital marketing make you rich, digital marketing from home, digital marketing make money, digital marketing certification, digital marketing agency, digital marketing career, digital marketing beginner, how to promote course online, digital marketing expert",
+  title = "Legacy Growth | Harper Harvey - Digital Marketing Expert & Course Creator",
+  description = "Learn how digital marketing works and start earning from home with Legacy Growth. Discover if digital marketing can make you rich with proven strategies. Digital marketing courses, jobs, and certification that work. Join 2.7M+ customers.",
+  keywords = "Legacy Growth, Harper Harvey, digital marketing jobs, digital marketing courses, how digital marketing works, can digital marketing make you rich, digital marketing from home, digital marketing make money, digital marketing certification, digital marketing agency, digital marketing career, digital marketing beginner, how to promote course online, digital marketing expert",
   image = "/assets/hero-image.jpg",
-  url = "https://harperbuilt.lovable.app"
+  url = "https://legacygrowth.site"
 }: SEOHeadProps) {
   
   useEffect(() => {
