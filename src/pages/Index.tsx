@@ -24,6 +24,9 @@ import { useExitIntent } from "@/hooks/useExitIntent";
 import { useHolidayTheme } from "@/hooks/useHolidayTheme";
 import { HolidayBanner } from "@/components/HolidayBanner";
 import { HolidayOfferCard } from "@/components/HolidayOfferCard";
+import { ROICalculator } from "@/components/ROICalculator";
+import { LiveSuccessCounter } from "@/components/LiveSuccessCounter";
+import { CertificationBadges } from "@/components/CertificationBadges";
 import { Button } from "@/components/ui/button";
 import { Brain, MessageCircle, CreditCard } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -49,24 +52,43 @@ const Index = () => {
       <section className="sticky top-0 z-40 bg-gradient-luxury border-b border-luxury-gold/30 shadow-luxury">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between flex-wrap gap-3">
-            <div className="flex items-center gap-3">
-              <CreditCard className="w-5 h-5 text-accent" />
-              <p className="text-white font-semibold text-sm md:text-base">
-                Ready to secure your spot? Multiple payment options available!
-              </p>
+            <div className="flex items-center gap-4 flex-wrap justify-between w-full">
+              <div className="flex items-center gap-3">
+                <CreditCard className="w-5 h-5 text-accent" />
+                <p className="text-white font-semibold text-sm md:text-base">
+                  Ready to secure your spot? Multiple payment options available!
+                </p>
+              </div>
+              <div className="flex items-center gap-3">
+                <Button
+                  onClick={() => navigate('/blog')}
+                  variant="outline"
+                  className="bg-white/10 text-white border-white/30 hover:bg-white/20 font-semibold"
+                >
+                  Free Resources
+                </Button>
+                <Button
+                  onClick={() => navigate('/client-portal')}
+                  variant="outline"
+                  className="bg-white/10 text-white border-white/30 hover:bg-white/20 font-semibold"
+                >
+                  Client Login
+                </Button>
+                <Button
+                  onClick={() => navigate('/payment-methods')}
+                  className="bg-accent text-accent-foreground hover:bg-accent/90 font-bold px-6 py-2 shadow-gold"
+                >
+                  Secure Your Spot Now
+                </Button>
+              </div>
             </div>
-            <Button
-              onClick={() => navigate('/payment-methods')}
-              className="bg-accent text-accent-foreground hover:bg-accent/90 font-bold px-6 py-2 shadow-gold"
-            >
-              Secure Your Spot Now
-            </Button>
           </div>
         </div>
       </section>
       
       <HeroSection />
       <TrustedLogosSection />
+      <LiveSuccessCounter />
       <WhoIHelpSection />
       
       <LazySection>
@@ -101,6 +123,10 @@ const Index = () => {
 
       <PickYourPathSection />
 
+      <LazySection>
+        <ROICalculator />
+      </LazySection>
+
       {/* Holiday Special Offer - Shows when holiday is active */}
       {currentHoliday && (
         <LazySection>
@@ -134,6 +160,10 @@ const Index = () => {
       
       <LazySection>
         <TestimonialsSection />
+      </LazySection>
+
+      <LazySection>
+        <CertificationBadges />
       </LazySection>
       
       <LazySection>
