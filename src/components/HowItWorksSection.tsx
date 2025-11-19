@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { MessageCircle, Settings, Smartphone, Target, Bot, GraduationCap } from "lucide-react";
@@ -10,45 +11,79 @@ export function HowItWorksSection() {
   const services = [
     {
       icon: Settings,
-      title: "Done-for-you setup",
-      description: "Beacons, funnels, links, email & payment systems ready to go",
+      title: "Step 1: Complete Done-For-You Setup",
+      description: "I build your Beacons store, sales funnel, payment system, and email automation. Everything ready to collect payments in 72 hours.",
       color: "text-primary"
     },
     {
       icon: Smartphone, 
-      title: "Daily content strategy",
-      description: "Hands-free Instagram/Facebook posting that actually converts",
+      title: "Step 2: Content & Marketing Strategy",
+      description: "Receive proven Instagram and Facebook content templates that convert followers into buyers automatically.",
       color: "text-success"
     },
     {
       icon: Bot,
-      title: "Lead generation automation", 
-      description: "No more cold DMs - let the system bring customers to you",
+      title: "Step 3: Lead Generation Automation", 
+      description: "Automated lead magnet funnels and chatbot sequences that bring interested customers to you 24/7.",
       color: "text-purple-500"
     },
     {
       icon: Target,
-      title: "High-converting funnel strategy",
-      description: "Built with premium tools (Canva Pro, ManyChat, Beacons AI)",
+      title: "Step 4: Conversion Optimization",
+      description: "High-converting sales pages built with premium tools (Canva Pro, ManyChat, Beacons AI) proven to get sales.",
       color: "text-orange-500"
     },
     {
       icon: GraduationCap,
-      title: "Private guidance",
-      description: "So you're never stuck or confused again",
+      title: "Step 5: Ongoing Support & Training",
+      description: "30 days of WhatsApp support so you're never confused about how to use your new system.",
       color: "text-blue-500"
     }
   ];
+
+  // Add HowTo Schema
+  useEffect(() => {
+    let existingScript = document.getElementById('howto-schema');
+    if (existingScript) {
+      existingScript.remove();
+    }
+
+    const howToSchema = {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Set Up a High-Converting Sales Funnel for Digital Products",
+      "description": "Complete guide to setting up a sales funnel that generates consistent revenue from digital products and courses",
+      "step": services.map((service, index) => ({
+        "@type": "HowToStep",
+        "position": index + 1,
+        "name": service.title,
+        "text": service.description
+      }))
+    };
+
+    const script = document.createElement('script');
+    script.id = 'howto-schema';
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(howToSchema);
+    document.head.appendChild(script);
+
+    return () => {
+      const scriptToRemove = document.getElementById('howto-schema');
+      if (scriptToRemove) {
+        scriptToRemove.remove();
+      }
+    };
+  }, []);
 
   return (
     <section className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            What You Get When You Work With Harper
+            How Do I Help You Get Sales From Your Digital Products?
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A complete done-for-you system that takes you from confused to converting
+            Here's my proven 5-step process that takes you from confused to converting in 72 hours
           </p>
         </div>
 

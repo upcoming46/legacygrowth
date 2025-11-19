@@ -49,19 +49,15 @@ export function HeroSection() {
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight">
-              From Stuck to{" "}
-              <span className="bg-gradient-to-r from-accent to-accent/80 bg-clip-text text-transparent">
-                Sales
-              </span>
+              Struggling to Get Sales? Here's How to Turn Your Digital Products Into Revenue
             </h1>
             
             <h2 className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-4 font-medium font-serif">
-              The Digital Shortcut That's Changing Lives
+              Professional Sales Funnel Setup That Gets Results in 7-14 Days
             </h2>
             
             <p className="text-base sm:text-lg text-white/80 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              Real results. Real people. Real freedom. Discover the system that's helped moms, 
-              9-5 workers, and digital beginners turn confusion into consistent sales—without tech overwhelm.
+              If you have a digital product but struggle to get consistent sales, I can help. Expert funnel setup and optimization service that helped 100+ digital marketers generate their first $424+ in overnight sales. No tech skills required—I handle everything for you.
             </p>
 
             {/* CTA Buttons */}

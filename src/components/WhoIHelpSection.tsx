@@ -48,14 +48,14 @@ export function WhoIHelpSection() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            If You've Bought{" "}
+            Who Can I Help Get More Sales From Digital Products?
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            If you have{" "}
             <span className={`${courses[currentCourseIndex].color} transition-all duration-500 font-extrabold`}>
               {courses[currentCourseIndex].name}
             </span>{" "}
-            But Feel Stuck...
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Here's how to get unstuck in 72 hours and start seeing real results
+            or any digital product but struggle with sales, here's how I help you get results in 72 hours
           </p>
         </div>
 
@@ -77,7 +77,7 @@ export function WhoIHelpSection() {
           {/* Common Phrases */}
           <div className="text-center mb-8">
             <h3 className="text-2xl font-semibold text-foreground mb-8">
-              If you've ever said:
+              Are You Saying These Things About Your Digital Business?
             </h3>
           </div>
 

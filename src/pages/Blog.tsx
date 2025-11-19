@@ -81,8 +81,10 @@ export default function Blog() {
   return (
     <>
       <SEOHead 
-        title="Free Digital Marketing Resources & Funnel Optimization Blog | Harper Harvey"
-        description="Expert insights on sales funnels, conversion optimization, email marketing, and digital strategy. Learn proven tactics to grow your online business."
+        title="How to Optimize Sales Funnels & Increase Conversions | Free Digital Marketing Resources"
+        description="Learn proven strategies to optimize your sales funnels and increase conversion rates. Free expert guides on email marketing, landing page optimization, A/B testing, and conversion psychology from digital marketing consultant Harper Harvey."
+        keywords="how to optimize sales funnel, how to increase conversion rate, sales funnel optimization guide, landing page optimization tips, email marketing best practices, A/B testing guide, conversion rate optimization strategies, digital marketing free resources, sales psychology tactics, funnel automation guide"
+        schema="blog"
       />
 
       {/* Header */}
@@ -90,10 +92,10 @@ export default function Blog() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
-              Free Resources & <span className="text-primary">Insights</span>
+              Learn How to Build High-Converting <span className="text-primary">Sales Funnels</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8">
-              Proven strategies, case studies, and actionable tips to help you build profitable sales funnels
+              Free expert guides on funnel optimization, conversion strategies, and proven tactics that helped 100+ digital marketers increase their sales. Written by Harper Harvey, digital marketing sales consultant.
             </p>
 
             {/* Search */}
