@@ -6,14 +6,24 @@ interface SEOHeadProps {
   keywords?: string;
   image?: string;
   url?: string;
+  schema?: 'home' | 'blog' | 'article';
+  articleData?: {
+    headline: string;
+    datePublished: string;
+    dateModified?: string;
+    author: string;
+    category: string;
+  };
 }
 
 export function SEOHead({ 
-  title = "Legacy Growth | Harper Harvey - Digital Marketing Sales & Funnel Setup Expert",
-  description = "Expert help for digital marketers to get more sales. Professional course promotion, store setup, sales funnel optimization, and Instagram marketing. Turn your digital products into consistent sales. 100+ students earning $424+ overnight with our proven setup system.",
-  keywords = "Legacy Growth, Harper Harvey, digital marketing sales help, course promotion services, sales funnel setup, digital marketing store setup, increase course sales, funnel optimization, how to promote course online, digital marketing consultant, Instagram marketing setup, Beacons store setup, course sales strategy, digital product promotion, marketing automation setup",
+  title = "How to Get More Sales from Your Digital Products | Expert Funnel Setup by Harper Harvey",
+  description = "Struggling to get sales from your digital products? I help digital marketers set up high-converting sales funnels that generate consistent revenue. 100+ clients achieved $424+ in first-night sales with proven funnel strategies. Expert in course promotion, store optimization, and Instagram marketing automation.",
+  keywords = "how to get more sales digital products, how to promote my course online, sales funnel setup service, digital marketing consultant for sales, increase course sales fast, funnel optimization expert, Beacons store setup help, Instagram marketing automation, course launch strategy, digital product sales help, conversion rate optimization, online store setup expert, sales funnel builder service, digital marketing sales specialist",
   image = "/assets/hero-image.jpg",
-  url = "https://legacygrowth.site"
+  url = "https://legacygrowth.site",
+  schema = 'home',
+  articleData
 }: SEOHeadProps) {
   
   useEffect(() => {
@@ -69,7 +79,121 @@ export function SEOHead({
       twitterImage.setAttribute('content', image);
     }
     
-  }, [title, description, keywords, image, url]);
+    // Add JSON-LD structured data
+    let existingScript = document.getElementById('structured-data');
+    if (existingScript) {
+      existingScript.remove();
+    }
+
+    const structuredDataGraph: any[] = [
+      // Organization Schema
+      {
+        "@type": "Organization",
+        "@id": `${url}#organization`,
+        "name": "Legacy Growth",
+        "url": url,
+        "logo": {
+          "@type": "ImageObject",
+          "url": `${url}/assets/hero-image.jpg`
+        },
+        "founder": {
+          "@type": "Person",
+          "name": "Harper Harvey",
+          "jobTitle": "Digital Marketing Sales & Funnel Optimization Expert",
+          "description": "Expert digital marketing consultant specializing in sales funnel setup, course promotion, and conversion optimization. Helped 100+ clients generate consistent sales from digital products.",
+          "knowsAbout": ["Sales Funnel Optimization", "Course Promotion", "Digital Marketing", "Conversion Rate Optimization", "Instagram Marketing", "Marketing Automation"]
+        },
+        "sameAs": [
+          "https://www.instagram.com/legacygrowth",
+          "https://legacygrowth.site"
+        ]
+      },
+      // Service Schema
+      {
+        "@type": "Service",
+        "@id": `${url}#service`,
+        "serviceType": "Digital Marketing Sales Funnel Setup",
+        "provider": {
+          "@id": `${url}#organization`
+        },
+        "areaServed": "Worldwide",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Digital Marketing Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Course Promotion & Launch Strategy",
+                "description": "Complete course promotion setup with proven sales funnels that convert visitors into paying students"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Sales Funnel Optimization",
+                "description": "Expert funnel optimization to increase conversion rates and maximize revenue from existing traffic"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Digital Store Setup",
+                "description": "Professional Beacons and digital store setup with conversion-optimized design and automation"
+              }
+            }
+          ]
+        }
+      },
+      // Webpage Schema
+      {
+        "@type": "WebPage",
+        "@id": `${url}#webpage`,
+        "url": url,
+        "name": title,
+        "description": description,
+        "publisher": {
+          "@id": `${url}#organization`
+        },
+        "inLanguage": "en-US"
+      }
+    ];
+
+    // Add Article schema if article data is provided
+    if (schema === 'article' && articleData) {
+      structuredDataGraph.push({
+        "@type": "Article",
+        "headline": articleData.headline,
+        "datePublished": articleData.datePublished,
+        "dateModified": articleData.dateModified || articleData.datePublished,
+        "author": {
+          "@type": "Person",
+          "name": articleData.author
+        },
+        "publisher": {
+          "@id": `${url}#organization`
+        },
+        "image": image,
+        "articleSection": articleData.category,
+        "inLanguage": "en-US"
+      });
+    }
+
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@graph": structuredDataGraph
+    };
+
+    const script = document.createElement('script');
+    script.id = 'structured-data';
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(structuredData);
+    document.head.appendChild(script);
+    
+  }, [title, description, keywords, image, url, schema, articleData]);
 
   return null;
 }

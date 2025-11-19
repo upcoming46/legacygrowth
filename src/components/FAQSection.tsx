@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -10,16 +11,16 @@ import { Shield } from "lucide-react";
 export function FAQSection() {
   const faqs = [
     {
-      question: "What if I'm not tech-savvy?",
-      answer: "That's exactly why I created this service! I handle all the technical setup for you. You don't need to know coding, design, or any complex tech stuff. I'll build everything and show you exactly how to use it in simple terms."
+      question: "Do I need technical skills to work with you?",
+      answer: "No technical skills required. I handle 100% of the technical setup including coding, design, and platform configuration. You'll receive a fully-functional, ready-to-use system with simple step-by-step instructions for managing your content. Perfect for non-tech-savvy marketers who want professional results."
     },
     {
-      question: "How long until I see results?",
-      answer: "Most clients start seeing their first sales within 7-14 days after setup. However, this depends on factors like your chosen niche, traffic sources, and how actively you promote. I'll give you realistic timelines based on your specific situation."
+      question: "How fast can I start seeing sales after setup?",
+      answer: "Most clients see their first sales within 7-14 days. Many achieve their first overnight sales within 48 hours of going live. Results depend on your niche selection, existing audience size, and promotional efforts. I provide a realistic timeline and launch strategy tailored to your specific situation during our initial consultation."
     },
     {
-      question: "Is this legitimate? I've been scammed before.",
-      answer: "I completely understand your concern. That's why I provide: verified client testimonials with real results, transparent pricing with no hidden fees, and ongoing support after your setup. You can also check out my previous work and speak to current clients before committing."
+      question: "How do I know this isn't a scam?",
+      answer: "I understand your concern - the digital marketing space has many bad actors. Here's what makes Legacy Growth different: 100+ verified client testimonials with real dollar amounts and screenshots, transparent pricing (no hidden fees or upsells), 30-day money-back guarantee on setup quality, portfolio of live client stores you can review, and direct client references available upon request. You're protected every step of the way."
     },
     {
       question: "Do you offer refunds or guarantees?",
@@ -43,15 +44,49 @@ export function FAQSection() {
     }
   ];
 
+  // Add FAQ Schema
+  useEffect(() => {
+    let existingScript = document.getElementById('faq-schema');
+    if (existingScript) {
+      existingScript.remove();
+    }
+
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
+    };
+
+    const script = document.createElement('script');
+    script.id = 'faq-schema';
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(faqSchema);
+    document.head.appendChild(script);
+
+    return () => {
+      const scriptToRemove = document.getElementById('faq-schema');
+      if (scriptToRemove) {
+        scriptToRemove.remove();
+      }
+    };
+  }, []);
+
   return (
     <section className="py-20 bg-muted">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Common Questions Answered
+            Frequently Asked Questions About Sales Funnel Setup
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Everything you need to know before taking the next step
+            Get answers to common questions about working with a digital marketing sales consultant
           </p>
         </div>
 
