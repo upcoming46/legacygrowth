@@ -27,6 +27,7 @@ import { HolidayOfferCard } from "@/components/HolidayOfferCard";
 import { ROICalculator } from "@/components/ROICalculator";
 import { LiveSuccessCounter } from "@/components/LiveSuccessCounter";
 import { CertificationBadges } from "@/components/CertificationBadges";
+import { MobileNavigation } from "@/components/MobileNavigation";
 import { Button } from "@/components/ui/button";
 import { Brain, MessageCircle, CreditCard } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -48,22 +49,27 @@ const Index = () => {
       
       <UrgencyBannerSection />
       
-      {/* Payment CTA Banner */}
+      {/* Payment CTA Banner with Mobile Navigation */}
       <section className="sticky top-0 z-40 bg-gradient-luxury border-b border-luxury-gold/30 shadow-luxury">
         <div className="container mx-auto px-4 py-3">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
-            <div className="flex items-center gap-3 text-center sm:text-left">
-              <CreditCard className="w-5 h-5 text-accent flex-shrink-0" />
-              <p className="text-white font-semibold text-sm md:text-base">
-                Ready to secure your spot? Multiple payment options available!
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3 flex-1 min-w-0">
+              <CreditCard className="w-5 h-5 text-accent flex-shrink-0 hidden sm:block" />
+              <p className="text-white font-semibold text-sm md:text-base truncate">
+                <span className="hidden sm:inline">Ready to secure your spot? Multiple payment options available!</span>
+                <span className="sm:hidden">Secure your spot today!</span>
               </p>
             </div>
-            <Button
-              onClick={() => navigate('/payment-methods')}
-              className="bg-accent text-accent-foreground hover:bg-accent/90 font-bold px-6 py-2 shadow-gold whitespace-nowrap"
-            >
-              Secure Your Spot Now
-            </Button>
+            <div className="flex items-center gap-2">
+              <Button
+                onClick={() => navigate('/payment-methods')}
+                className="bg-accent text-accent-foreground hover:bg-accent/90 font-bold px-4 sm:px-6 py-2 shadow-gold whitespace-nowrap min-h-[44px] touch-manipulation text-sm sm:text-base"
+              >
+                <span className="hidden sm:inline">Secure Your Spot Now</span>
+                <span className="sm:hidden">Get Started</span>
+              </Button>
+              <MobileNavigation />
+            </div>
           </div>
         </div>
       </section>

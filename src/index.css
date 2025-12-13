@@ -146,6 +146,35 @@ All colors MUST be HSL.
     from { box-shadow: 0 0 20px hsl(var(--accent) / 0.5); }
     to { box-shadow: 0 0 30px hsl(var(--accent) / 0.8); }
   }
+
+  /* Touch-friendly targets - minimum 44x44px */
+  .touch-manipulation {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Ensure all interactive elements have minimum touch targets */
+  button, 
+  a, 
+  [role="button"],
+  input[type="submit"],
+  input[type="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Mobile-optimized text */
+  @media (max-width: 640px) {
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+
+  /* Safe area padding for notched devices */
+  .safe-area-pb {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
   
   /* Hide Lovable badges and elements */
   a[href*="lovable.dev"],

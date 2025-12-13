@@ -56,7 +56,7 @@ export function TestimonialsSection() {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-background to-muted/30">
+    <section id="testimonials" className="py-20 bg-gradient-to-b from-background to-muted/30">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16 max-w-3xl mx-auto">
@@ -103,11 +103,15 @@ export function TestimonialsSection() {
                 {/* Full Screenshot - Clickable */}
                 <Dialog>
                   <DialogTrigger asChild>
-                    <div className="relative group cursor-pointer">
+                    <div className="relative group cursor-pointer touch-manipulation min-h-[44px]">
                       <img
                         src={testimonial.image}
                         alt={`${testimonial.name} testimonial`}
                         className="w-full h-auto rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 border border-border"
+                        loading="lazy"
+                        decoding="async"
+                        width={400}
+                        height={600}
                       />
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 rounded-lg flex items-center justify-center">
                         <span className="opacity-0 group-hover:opacity-100 bg-primary text-primary-foreground px-4 py-2 rounded-lg font-semibold transition-opacity duration-300 flex items-center gap-2">
@@ -123,6 +127,8 @@ export function TestimonialsSection() {
                         src={testimonial.image}
                         alt={`${testimonial.name} full testimonial`}
                         className="w-full h-auto"
+                        loading="lazy"
+                        decoding="async"
                       />
                     </div>
                   </DialogContent>

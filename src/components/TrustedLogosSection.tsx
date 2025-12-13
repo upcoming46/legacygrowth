@@ -51,12 +51,16 @@ export function TrustedLogosSection() {
             {duplicatedLogos.map((logo, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 mx-6 md:mx-8 flex items-center justify-center min-w-[100px] md:min-w-[120px]"
+                className="flex-shrink-0 mx-4 sm:mx-6 md:mx-8 flex items-center justify-center min-w-[80px] sm:min-w-[100px] md:min-w-[120px]"
               >
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  className="h-8 md:h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
+                  className="h-6 sm:h-8 md:h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
+                  loading="lazy"
+                  decoding="async"
+                  width={120}
+                  height={40}
                 />
               </div>
             ))}

@@ -41,20 +41,20 @@ export function PortfolioSection() {
     <section className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
             My Store Templates Portfolio
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
             Explore professionally designed Beacons stores I've built across various niches.
             Click any template to view in full detail.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 max-w-7xl mx-auto">
           {templates.map((template, index) => (
             <Card
               key={index}
-              className="group relative overflow-hidden cursor-pointer hover:shadow-elegant transition-all duration-300 transform hover:scale-105 animate-fade-in"
+              className="group relative overflow-hidden cursor-pointer hover:shadow-elegant transition-all duration-300 transform hover:scale-105 animate-fade-in touch-manipulation"
               style={{ animationDelay: `${index * 0.1}s` }}
               onClick={() => setSelectedTemplate(template.src)}
             >
@@ -63,6 +63,10 @@ export function PortfolioSection() {
                   src={template.src}
                   alt={template.alt}
                   className="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                  width={225}
+                  height={400}
                 />
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-2">
                   <Eye className="h-8 w-8 text-white" />
