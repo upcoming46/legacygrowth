@@ -105,7 +105,7 @@ export function ResultsGallerySection() {
   };
 
   return (
-    <section ref={sectionRef} className="py-12 sm:py-16 lg:py-20 bg-background">
+    <section id="results-gallery" ref={sectionRef} className="py-12 sm:py-16 lg:py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 sm:mb-16">
           <Badge className="bg-accent text-accent-foreground mb-4 px-3 sm:px-4 py-2 text-sm sm:text-base">
