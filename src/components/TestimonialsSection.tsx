@@ -8,6 +8,9 @@ import roseTestimonial from "@/assets/testimonials/rose-testimonial.png";
 import stellaTestimonial from "@/assets/testimonials/stella-testimonial.png";
 import sodiTestimonial from "@/assets/testimonials/sodi-testimonial.png";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { SwipeableGallery } from "@/components/SwipeableGallery";
+import { ImageWithSkeleton } from "@/components/ImageWithSkeleton";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export function TestimonialsSection() {
   const testimonials = [
@@ -55,6 +58,71 @@ export function TestimonialsSection() {
     },
   ];
 
+  const isMobile = useIsMobile();
+
+  const TestimonialCard = ({ testimonial, index }: { testimonial: typeof testimonials[0]; index: number }) => (
+    <Card 
+      key={index}
+      className="overflow-hidden hover:shadow-2xl transition-all duration-300 bg-card border-2 hover:border-primary/50 h-full"
+    >
+      <div className="grid md:grid-cols-2 gap-6 p-6">
+        {/* Text Preview */}
+        <div className="flex flex-col justify-center space-y-4">
+          <div className="flex items-start space-x-2">
+            <Quote className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
+            <div>
+              <h3 className="text-2xl font-bold text-foreground mb-2">
+                {testimonial.name}
+              </h3>
+              <div className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-lg font-semibold text-lg mb-4">
+                {testimonial.highlight}
+              </div>
+            </div>
+          </div>
+          <p className="text-muted-foreground text-lg leading-relaxed italic">
+            "{testimonial.preview}"
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Click image to read the full story →
+          </p>
+        </div>
+
+        {/* Full Screenshot - Clickable */}
+        <Dialog>
+          <DialogTrigger asChild>
+            <div className="relative group cursor-pointer touch-manipulation min-h-[44px]">
+              <ImageWithSkeleton
+                src={testimonial.image}
+                alt={`${testimonial.name} testimonial`}
+                className="w-full h-auto rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 border border-border"
+                skeletonClassName="w-full aspect-[2/3] rounded-lg"
+                width={400}
+                height={600}
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 rounded-lg flex items-center justify-center">
+                <span className="opacity-0 group-hover:opacity-100 bg-primary text-primary-foreground px-4 py-2 rounded-lg font-semibold transition-opacity duration-300 flex items-center gap-2">
+                  <Maximize2 className="w-4 h-4" />
+                  View Full Size
+                </span>
+              </div>
+            </div>
+          </DialogTrigger>
+          <DialogContent className="max-w-4xl max-h-[90vh] p-2">
+            <div className="overflow-auto max-h-[85vh]">
+              <img
+                src={testimonial.image}
+                alt={`${testimonial.name} full testimonial`}
+                className="w-full h-auto"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </DialogContent>
+        </Dialog>
+      </div>
+    </Card>
+  );
+
   return (
     <section id="testimonials" className="py-20 bg-gradient-to-b from-background to-muted/30">
       <div className="container mx-auto px-4">
@@ -72,71 +140,19 @@ export function TestimonialsSection() {
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid gap-8 max-w-6xl mx-auto">
-          {testimonials.map((testimonial, index) => (
-            <Card 
-              key={index}
-              className="overflow-hidden hover:shadow-2xl transition-all duration-300 bg-card border-2 hover:border-primary/50"
-            >
-              <div className="grid md:grid-cols-2 gap-6 p-6">
-                {/* Text Preview */}
-                <div className="flex flex-col justify-center space-y-4">
-                  <div className="flex items-start space-x-2">
-                    <Quote className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
-                    <div>
-                      <h3 className="text-2xl font-bold text-foreground mb-2">
-                        {testimonial.name}
-                      </h3>
-                      <div className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-lg font-semibold text-lg mb-4">
-                        {testimonial.highlight}
-                      </div>
-                    </div>
-                  </div>
-                  <p className="text-muted-foreground text-lg leading-relaxed italic">
-                    "{testimonial.preview}"
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    Click image to read the full story →
-                  </p>
-                </div>
-
-                {/* Full Screenshot - Clickable */}
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <div className="relative group cursor-pointer touch-manipulation min-h-[44px]">
-                      <img
-                        src={testimonial.image}
-                        alt={`${testimonial.name} testimonial`}
-                        className="w-full h-auto rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 border border-border"
-                        loading="lazy"
-                        decoding="async"
-                        width={400}
-                        height={600}
-                      />
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 rounded-lg flex items-center justify-center">
-                        <span className="opacity-0 group-hover:opacity-100 bg-primary text-primary-foreground px-4 py-2 rounded-lg font-semibold transition-opacity duration-300 flex items-center gap-2">
-                          <Maximize2 className="w-4 h-4" />
-                          View Full Size
-                        </span>
-                      </div>
-                    </div>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-4xl max-h-[90vh] p-2">
-                    <div className="overflow-auto max-h-[85vh]">
-                      <img
-                        src={testimonial.image}
-                        alt={`${testimonial.name} full testimonial`}
-                        className="w-full h-auto"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                  </DialogContent>
-                </Dialog>
-              </div>
-            </Card>
-          ))}
-        </div>
+        {isMobile ? (
+          <SwipeableGallery className="max-w-lg mx-auto">
+            {testimonials.map((testimonial, index) => (
+              <TestimonialCard key={index} testimonial={testimonial} index={index} />
+            ))}
+          </SwipeableGallery>
+        ) : (
+          <div className="grid gap-8 max-w-6xl mx-auto">
+            {testimonials.map((testimonial, index) => (
+              <TestimonialCard key={index} testimonial={testimonial} index={index} />
+            ))}
+          </div>
+        )}
 
         {/* Trust Badge */}
         <div className="text-center mt-16 max-w-2xl mx-auto">

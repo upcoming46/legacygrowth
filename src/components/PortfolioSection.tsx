@@ -2,6 +2,9 @@ import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { useState } from "react";
 import { Eye } from "lucide-react";
+import { SwipeableGallery } from "@/components/SwipeableGallery";
+import { ImageWithSkeleton } from "@/components/ImageWithSkeleton";
+import { useIsMobile } from "@/hooks/use-mobile";
 import template1 from "@/assets/templates/template1.webp";
 import template2 from "@/assets/templates/template2.webp";
 import template4 from "@/assets/templates/template4.webp";
@@ -19,6 +22,7 @@ import goldenStrategiesTemplate from "@/assets/templates/golden-strategies-templ
 
 export function PortfolioSection() {
   const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null);
+  const isMobile = useIsMobile();
 
   const templates = [
     { src: template1, alt: "Fashion & Lifestyle Store", category: "Fashion" },
@@ -50,34 +54,62 @@ export function PortfolioSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 max-w-7xl mx-auto">
-          {templates.map((template, index) => (
-            <Card
-              key={index}
-              className="group relative overflow-hidden cursor-pointer hover:shadow-elegant transition-all duration-300 transform hover:scale-105 animate-fade-in touch-manipulation"
-              style={{ animationDelay: `${index * 0.1}s` }}
-              onClick={() => setSelectedTemplate(template.src)}
-            >
-              <div className="relative aspect-[9/16]">
-                <img
-                  src={template.src}
-                  alt={template.alt}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                  decoding="async"
-                  width={225}
-                  height={400}
-                />
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-2">
-                  <Eye className="h-8 w-8 text-white" />
-                  <p className="text-white font-semibold text-sm px-2 text-center">
-                    {template.category}
-                  </p>
+        {isMobile ? (
+          <SwipeableGallery className="max-w-sm mx-auto">
+            {templates.map((template, index) => (
+              <Card
+                key={index}
+                className="group relative overflow-hidden cursor-pointer hover:shadow-elegant transition-all duration-300 touch-manipulation"
+                onClick={() => setSelectedTemplate(template.src)}
+              >
+                <div className="relative aspect-[9/16]">
+                  <ImageWithSkeleton
+                    src={template.src}
+                    alt={template.alt}
+                    className="w-full h-full object-cover"
+                    skeletonClassName="w-full h-full"
+                    width={225}
+                    height={400}
+                  />
+                  <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center gap-2">
+                    <Eye className="h-8 w-8 text-white" />
+                    <p className="text-white font-semibold text-sm px-2 text-center">
+                      {template.category}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </Card>
-          ))}
-        </div>
+              </Card>
+            ))}
+          </SwipeableGallery>
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 max-w-7xl mx-auto">
+            {templates.map((template, index) => (
+              <Card
+                key={index}
+                className="group relative overflow-hidden cursor-pointer hover:shadow-elegant transition-all duration-300 transform hover:scale-105 animate-fade-in touch-manipulation"
+                style={{ animationDelay: `${index * 0.1}s` }}
+                onClick={() => setSelectedTemplate(template.src)}
+              >
+                <div className="relative aspect-[9/16]">
+                  <ImageWithSkeleton
+                    src={template.src}
+                    alt={template.alt}
+                    className="w-full h-full object-cover"
+                    skeletonClassName="w-full h-full"
+                    width={225}
+                    height={400}
+                  />
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-2">
+                    <Eye className="h-8 w-8 text-white" />
+                    <p className="text-white font-semibold text-sm px-2 text-center">
+                      {template.category}
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        )}
 
         <div className="text-center mt-12 animate-fade-in">
           <Card className="p-8 bg-primary text-primary-foreground max-w-2xl mx-auto">
