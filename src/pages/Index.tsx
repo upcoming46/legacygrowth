@@ -28,6 +28,7 @@ import { ROICalculator } from "@/components/ROICalculator";
 import { LiveSuccessCounter } from "@/components/LiveSuccessCounter";
 import { CertificationBadges } from "@/components/CertificationBadges";
 import { MobileNavigation } from "@/components/MobileNavigation";
+import { ScrollToTopButton } from "@/components/ScrollToTopButton";
 import { Button } from "@/components/ui/button";
 import { Brain, MessageCircle, CreditCard } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -192,6 +193,7 @@ const Index = () => {
       </section>
       
       <StickyMobileCTA />
+      <ScrollToTopButton />
       <ExitIntentModal 
         isOpen={showExitIntent} 
         onClose={resetExitIntent}
