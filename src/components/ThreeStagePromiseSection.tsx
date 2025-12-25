@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Settings, Rocket, TrendingUp, MessageCircle } from "lucide-react";
+import { getWhatsAppLink } from "@/config/whatsapp";
 
 export function ThreeStagePromiseSection() {
   const stages = [
@@ -50,9 +51,7 @@ export function ThreeStagePromiseSection() {
   ];
 
   const handleWhatsAppClick = () => {
-    const message = "Hey Harper, I love your 3-Stage Promise system! I'm ready to go through all three phases and build a real business. Let's start with Phase 1!";
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/+2348127297536?text=${encodedMessage}`, '_blank');
+    window.open(getWhatsAppLink("Hey Harper, I love your 3-Stage Promise system! I'm ready to go through all three phases and build a real business. Let's start with Phase 1!"), '_blank');
   };
 
   return (

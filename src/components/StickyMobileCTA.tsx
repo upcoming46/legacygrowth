@@ -1,15 +1,13 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Calendar, X } from "lucide-react";
+import { getWhatsAppLink } from "@/config/whatsapp";
 
 export function StickyMobileCTA() {
   const [isVisible, setIsVisible] = useState(true);
 
   const handleWhatsAppClick = () => {
-    const message = encodeURIComponent(
-      "Hi Harper! I'm interested in your digital business setup. Can we discuss how you can help me start earning online?"
-    );
-    window.open(`https://wa.me/2348127297536?text=${message}`, "_blank");
+    window.open(getWhatsAppLink("Hi Harper! I'm interested in your digital business setup. Can we discuss how you can help me start earning online?"), "_blank");
   };
 
   const handleCalendarClick = () => {

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { Menu, X, MessageCircle, Calendar, CreditCard, HelpCircle, Star, Phone } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { getWhatsAppLink } from "@/config/whatsapp";
 
 export function MobileNavigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,10 +15,7 @@ export function MobileNavigation() {
   }, [navigate]);
 
   const handleWhatsAppClick = () => {
-    const message = encodeURIComponent(
-      "Hi Harper! I'm interested in your digital business setup. Can we discuss how you can help me start earning online?"
-    );
-    window.open(`https://wa.me/2348127297536?text=${message}`, "_blank");
+    window.open(getWhatsAppLink("Hi Harper! I'm interested in your digital business setup. Can we discuss how you can help me start earning online?"), "_blank");
     setIsOpen(false);
   };
 

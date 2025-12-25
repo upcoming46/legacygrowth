@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Flame, Clock, MessageCircle } from "lucide-react";
+import { getWhatsAppLink } from "@/config/whatsapp";
 
 export function UrgencyBannerSection() {
   // Get current month name
@@ -38,9 +39,7 @@ export function UrgencyBannerSection() {
 
   const handleWhatsAppClick = () => {
     const currentMonth = getCurrentMonth();
-    const message = `Hey Harper, I saw there are only 3 spots left for ${currentMonth} setup! I don't want to miss out. Can we get my store ready to sell in 72 hours?`;
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/+2348127297536?text=${encodedMessage}`, '_blank');
+    window.open(getWhatsAppLink(`Hey Harper, I saw there are only 3 spots left for ${currentMonth} setup! I don't want to miss out. Can we get my store ready to sell in 72 hours?`), '_blank');
   };
 
   return (

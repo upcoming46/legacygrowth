@@ -12,6 +12,7 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { z } from "zod";
 import { StickyMobileCTA } from "@/components/StickyMobileCTA";
+import { getWhatsAppLink } from "@/config/whatsapp";
 
 const paymentSchema = z.object({
   full_name: z.string().trim().min(2, "Name must be at least 2 characters").max(100),
@@ -59,10 +60,7 @@ export default function PaymentMethods() {
   };
 
   const handleWhatsAppClick = () => {
-    const message = encodeURIComponent(
-      `Hi team Harper! I just paid via bank transfer. Here's my name + email + package: ${formData.full_name}, ${formData.email}, ${customAmount || selectedAmount}`
-    );
-    window.open(`https://wa.me/2348127297536?text=${message}`, "_blank");
+    window.open(getWhatsAppLink(`Hi team Harper! I just paid via bank transfer. Here's my name + email + package: ${formData.full_name}, ${formData.email}, ${customAmount || selectedAmount}`), "_blank");
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {

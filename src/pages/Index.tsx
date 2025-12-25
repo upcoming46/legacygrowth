@@ -29,6 +29,7 @@ import { LiveSuccessCounter } from "@/components/LiveSuccessCounter";
 import { CertificationBadges } from "@/components/CertificationBadges";
 import { MobileNavigation } from "@/components/MobileNavigation";
 import { ScrollToTopButton } from "@/components/ScrollToTopButton";
+import { PullToRefresh } from "@/components/PullToRefresh";
 import { Button } from "@/components/ui/button";
 import { Brain, MessageCircle, CreditCard } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -41,7 +42,7 @@ const Index = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen">
+    <PullToRefresh>
       <SEOHead />
       <ReadingProgressBar />
       
@@ -206,7 +207,7 @@ const Index = () => {
         isOpen={showContactForm} 
         onClose={() => setShowContactForm(false)}
       />
-    </div>
+    </PullToRefresh>
   );
 };
 

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { MessageCircle, BookOpen, TrendingUp, Zap } from "lucide-react";
+import { getWhatsAppLink } from "@/config/whatsapp";
 
 export function PickYourPathSection() {
   const paths = [
@@ -28,8 +29,7 @@ export function PickYourPathSection() {
   ];
 
   const handleWhatsAppClick = (message: string) => {
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/+2348127297536?text=${encodedMessage}`, '_blank');
+    window.open(getWhatsAppLink(message), '_blank');
   };
 
   return (
