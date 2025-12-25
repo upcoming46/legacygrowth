@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { MessageCircle } from "lucide-react";
+import { getWhatsAppLink } from "@/config/whatsapp";
 
 interface ContactFormModalProps {
   isOpen: boolean;
@@ -34,8 +35,7 @@ My Goal: ${formData.goal}
 
 I'd love to discuss how you can help me achieve this!`;
 
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/+2348127297536?text=${encodedMessage}`, '_blank');
+    window.open(getWhatsAppLink(message), '_blank');
     onClose();
   };
 

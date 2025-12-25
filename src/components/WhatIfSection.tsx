@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { X, Check, MessageCircle, Mail } from "lucide-react";
+import { getWhatsAppLink } from "@/config/whatsapp";
 
 export function WhatIfSection() {
   const negativeScenarios = [
@@ -18,9 +19,7 @@ export function WhatIfSection() {
   ];
 
   const handleWhatsAppClick = () => {
-    const message = "Hey Harper, I'm tired of waiting and watching others succeed. I'm ready to get my digital business set up properly. Let's do this!";
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/+2348127297536?text=${encodedMessage}`, '_blank');
+    window.open(getWhatsAppLink("Hey Harper, I'm tired of waiting and watching others succeed. I'm ready to get my digital business set up properly. Let's do this!"), '_blank');
   };
 
   const handleEmailClick = () => {

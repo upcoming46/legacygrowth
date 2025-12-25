@@ -7,6 +7,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Progress } from "@/components/ui/progress";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowRight, ArrowLeft, Star, Zap, Target, TrendingUp } from "lucide-react";
+import { getWhatsAppLink } from "@/config/whatsapp";
 
 interface QuizModalProps {
   isOpen: boolean;
@@ -219,8 +220,7 @@ export function QuizModal({ isOpen, onClose }: QuizModalProps) {
               </div>
               <Button
                 onClick={() => {
-                  const message = encodeURIComponent(
-                    `Hi Harper! I just completed your quiz and got: ${result.level}
+                  const message = `Hi Harper! I just completed your quiz and got: ${result.level}
 
 My responses:
 ${answers.map(a => `• ${a.question}: ${a.answer}`).join('\n')}
@@ -229,9 +229,8 @@ I'm ready for: ${result.recommendation}
 
 Let's discuss how you can help me achieve my goals!
 
-Contact: ${leadData.email} | ${leadData.whatsapp}`
-                  );
-                  window.open(`https://wa.me/2348127297536?text=${message}`, "_blank");
+Contact: ${leadData.email} | ${leadData.whatsapp}`;
+                  window.open(getWhatsAppLink(message), "_blank");
                 }}
                 className="w-full bg-luxury-gold text-luxury-black hover:bg-luxury-gold/90 font-semibold py-3"
               >

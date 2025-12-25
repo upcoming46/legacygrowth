@@ -2,10 +2,11 @@ import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { MessageCircle, Settings, Smartphone, Target, Bot, GraduationCap } from "lucide-react";
+import { getWhatsAppLink } from "@/config/whatsapp";
 
 export function HowItWorksSection() {
   const handleWhatsAppClick = () => {
-    window.open("https://wa.me/+2348127297536", "_blank");
+    window.open(getWhatsAppLink(), "_blank");
   };
 
   const services = [

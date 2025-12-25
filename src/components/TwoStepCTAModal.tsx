@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowRight, MessageCircle } from "lucide-react";
+import { getWhatsAppLink } from "@/config/whatsapp";
 
 interface TwoStepCTAModalProps {
   isOpen: boolean;
@@ -69,21 +70,6 @@ export function TwoStepCTAModal({ isOpen, onClose, ctaType }: TwoStepCTAModalPro
       utm_content: urlParams.get('utm_content') || ''
     };
 
-    // Create personalized WhatsApp message
-    const whatsappMessage = encodeURIComponent(
-      `Hi Harper! I'm ${contactData.name}. 
-
-My biggest challenge: ${roadblockAnswer}
-
-I'd like to discuss how you can help me overcome this and start earning online.
-
-Contact Details:
-📧 Email: ${contactData.email}
-📱 WhatsApp: ${contactData.whatsapp}
-
-${Object.entries(utmParams).filter(([key, value]) => value).map(([key, value]) => `${key}: ${value}`).join('\n')}`
-    );
-
     // Store lead data (you can add webhook here)
     const leadData = {
       ...contactData,
@@ -96,7 +82,17 @@ ${Object.entries(utmParams).filter(([key, value]) => value).map(([key, value]) =
     console.log('Lead captured:', leadData);
 
     // Open WhatsApp
-    window.open(`https://wa.me/2348127297536?text=${whatsappMessage}`, "_blank");
+    window.open(getWhatsAppLink(`Hi Harper! I'm ${contactData.name}. 
+
+My biggest challenge: ${roadblockAnswer}
+
+I'd like to discuss how you can help me overcome this and start earning online.
+
+Contact Details:
+📧 Email: ${contactData.email}
+📱 WhatsApp: ${contactData.whatsapp}
+
+${Object.entries(utmParams).filter(([key, value]) => value).map(([key, value]) => `${key}: ${value}`).join('\n')}`), "_blank");
     
     onClose();
     toast({
