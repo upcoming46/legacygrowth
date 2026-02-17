@@ -8,53 +8,53 @@ All colors MUST be HSL.
 
 @layer base {
 :root {
-    --background: 0 0% 97%;
-    --foreground: 240 20% 3%;
+    --background: 210 17% 98%;
+    --foreground: 216 54% 23%;
 
     --card: 0 0% 100%;
-    --card-foreground: 240 20% 3%;
+    --card-foreground: 216 54% 23%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 20% 3%;
+    --popover-foreground: 216 54% 23%;
 
-    --primary: 240 20% 3%;
+    --primary: 216 54% 23%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 240 20% 15%;
+    --primary-glow: 216 54% 35%;
 
-    --secondary: 220 40% 95%;
-    --secondary-foreground: 240 20% 3%;
+    --secondary: 174 55% 39%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 220 40% 95%;
-    --muted-foreground: 240 15% 40%;
+    --muted: 210 17% 93%;
+    --muted-foreground: 216 30% 45%;
 
-    --accent: 40 100% 40%;
+    --accent: 32 97% 49%;
     --accent-foreground: 0 0% 100%;
 
-    --success: 135 65% 35%;
+    --success: 174 55% 39%;
     --success-foreground: 0 0% 100%;
 
-    --luxury-gold: 45 100% 50%;
-    --luxury-navy: 220 60% 15%;
-    --luxury-purple: 260 60% 25%;
-    --luxury-black: 240 20% 3%;
+    --luxury-gold: 32 97% 49%;
+    --luxury-navy: 216 54% 23%;
+    --luxury-purple: 174 55% 39%;
+    --luxury-black: 216 54% 13%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 40% 90%;
-    --input: 220 40% 90%;
-    --ring: 45 100% 50%;
+    --border: 210 17% 88%;
+    --input: 210 17% 88%;
+    --ring: 32 97% 49%;
 
-    --gradient-luxury: linear-gradient(135deg, hsl(240 20% 3%), hsl(220 60% 15%), hsl(45 100% 50%));
-    --gradient-gold: linear-gradient(135deg, hsl(45 100% 50%), hsl(45 100% 60%));
-    --gradient-navy: linear-gradient(135deg, hsl(220 60% 15%), hsl(220 60% 25%));
-    --gradient-purple: linear-gradient(135deg, hsl(260 60% 25%), hsl(260 60% 35%));
-    --gradient-hero: linear-gradient(135deg, hsl(240 20% 3%) 0%, hsl(220 60% 15%) 40%, hsl(45 100% 50%) 100%);
+    --gradient-luxury: linear-gradient(135deg, hsl(216 54% 13%), hsl(216 54% 23%), hsl(174 55% 39%));
+    --gradient-gold: linear-gradient(135deg, hsl(32 97% 49%), hsl(32 97% 59%));
+    --gradient-navy: linear-gradient(135deg, hsl(216 54% 23%), hsl(216 54% 33%));
+    --gradient-purple: linear-gradient(135deg, hsl(174 55% 33%), hsl(174 55% 45%));
+    --gradient-hero: linear-gradient(135deg, hsl(216 54% 13%) 0%, hsl(216 54% 23%) 40%, hsl(174 55% 39%) 100%);
     
-    --shadow-glow: 0 0 40px hsl(45 100% 50% / 0.3);
-    --shadow-luxury: 0 20px 40px -10px hsl(240 20% 3% / 0.3);
-    --shadow-gold: 0 10px 30px hsl(45 100% 50% / 0.2);
-    --shadow-elegant: 0 10px 30px -10px hsl(240 20% 3% / 0.1);
+    --shadow-glow: 0 0 40px hsl(32 97% 49% / 0.3);
+    --shadow-luxury: 0 20px 40px -10px hsl(216 54% 23% / 0.3);
+    --shadow-gold: 0 10px 30px hsl(32 97% 49% / 0.2);
+    --shadow-elegant: 0 10px 30px -10px hsl(216 54% 23% / 0.1);
 
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-luxury: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -79,33 +79,33 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 240 20% 3%;
-    --foreground: 0 0% 97%;
+    --background: 216 54% 8%;
+    --foreground: 210 17% 95%;
 
-    --card: 220 60% 15%;
-    --card-foreground: 0 0% 97%;
+    --card: 216 54% 15%;
+    --card-foreground: 210 17% 95%;
 
-    --popover: 220 60% 15%;
-    --popover-foreground: 0 0% 97%;
+    --popover: 216 54% 15%;
+    --popover-foreground: 210 17% 95%;
 
-    --primary: 45 100% 50%;
-    --primary-foreground: 240 20% 3%;
+    --primary: 174 55% 39%;
+    --primary-foreground: 216 54% 8%;
 
-    --secondary: 220 60% 15%;
-    --secondary-foreground: 0 0% 97%;
+    --secondary: 216 54% 20%;
+    --secondary-foreground: 210 17% 95%;
 
-    --muted: 220 60% 15%;
-    --muted-foreground: 0 0% 70%;
+    --muted: 216 54% 15%;
+    --muted-foreground: 210 17% 70%;
 
-    --accent: 45 100% 50%;
-    --accent-foreground: 240 20% 3%;
+    --accent: 32 97% 49%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 97%;
 
-    --border: 220 60% 25%;
-    --input: 220 60% 25%;
-    --ring: 45 100% 50%;
+    --border: 216 54% 25%;
+    --input: 216 54% 25%;
+    --ring: 32 97% 49%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
