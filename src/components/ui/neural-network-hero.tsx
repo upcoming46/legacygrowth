@@ -156,19 +156,22 @@ extend({ CPPNShaderMaterial });
 
 function ShaderPlane() {
   const meshRef = useRef<THREE.Mesh>(null!);
-  const materialRef = useRef<any>(null!);
+  const materialRef = useRef<any>(null);
+
+  // Create material imperatively to avoid lovable-tagger injecting props
+  // that R3F tries to apply as Three.js properties
+  const material = useMemo(() => new CPPNShaderMaterial() as any, []);
 
   useFrame((state) => {
-    if (!materialRef.current) return;
-    materialRef.current.iTime = state.clock.elapsedTime;
+    if (!material) return;
+    material.iTime = state.clock.elapsedTime;
     const { width, height } = state.size;
-    materialRef.current.iResolution.set(width, height);
+    material.iResolution.set(width, height);
   });
 
   return (
-    <mesh ref={meshRef}>
+    <mesh ref={meshRef} material={material}>
       <planeGeometry args={[2, 2]} />
-      <cPPNShaderMaterial ref={materialRef} />
     </mesh>
   );
 }
