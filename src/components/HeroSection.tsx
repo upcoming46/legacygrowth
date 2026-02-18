@@ -21,11 +21,13 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary">
       {/* Neural Network Shader Background */}
-      <ShaderBackground />
+      <div className="absolute inset-0 w-full h-full z-0">
+        <ShaderBackground />
+      </div>
       {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-black/40 z-[1]" />
+      <div className="absolute inset-0 bg-black/30 z-[1]" />
 
       <div className="container mx-auto px-4 py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
