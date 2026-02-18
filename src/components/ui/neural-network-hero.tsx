@@ -154,12 +154,8 @@ const CPPNShaderMaterial = shaderMaterial(
 
 extend({ CPPNShaderMaterial });
 
-function ShaderPlane() {
+function FullscreenShaderPlane() {
   const meshRef = useRef<THREE.Mesh>(null!);
-  const materialRef = useRef<any>(null);
-
-  // Create material imperatively to avoid lovable-tagger injecting props
-  // that R3F tries to apply as Three.js properties
   const material = useMemo(() => new CPPNShaderMaterial() as any, []);
 
   useFrame((state) => {
@@ -167,22 +163,22 @@ function ShaderPlane() {
     material.iTime = state.clock.elapsedTime;
     const { width, height } = state.size;
     material.iResolution.set(width, height);
+
+    // Scale plane to fill the orthographic viewport
+    if (meshRef.current) {
+      meshRef.current.scale.set(width, height, 1);
+    }
   });
 
   return (
     <mesh ref={meshRef} material={material}>
-      <planeGeometry args={[2, 2]} />
+      <planeGeometry args={[1, 1]} />
     </mesh>
   );
 }
 
 export function ShaderBackground() {
   const canvasRef = useRef<HTMLDivElement>(null);
-
-  const camera = useMemo(
-    () => ({ position: [0, 0, 1] as [number, number, number], fov: 75, near: 0.1, far: 1000 }),
-    []
-  );
 
   useGSAP(
     () => {
@@ -209,12 +205,13 @@ export function ShaderBackground() {
   return (
     <div ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ width: '100%', height: '100%' }}>
       <Canvas
-        camera={camera}
+        orthographic
+        camera={{ zoom: 1, position: [0, 0, 1], near: 0.1, far: 10 }}
         style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
         gl={{ antialias: false }}
         resize={{ scroll: false, debounce: { scroll: 50, resize: 0 } }}
       >
-        <ShaderPlane />
+        <FullscreenShaderPlane />
       </Canvas>
     </div>
   );
