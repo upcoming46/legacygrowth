@@ -207,11 +207,12 @@ export function ShaderBackground() {
   );
 
   return (
-    <div ref={canvasRef} className="absolute inset-0 w-full h-full">
+    <div ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ width: '100%', height: '100%' }}>
       <Canvas
         camera={camera}
-        style={{ width: '100%', height: '100%' }}
+        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
         gl={{ antialias: false }}
+        resize={{ scroll: false, debounce: { scroll: 50, resize: 0 } }}
       >
         <ShaderPlane />
       </Canvas>
