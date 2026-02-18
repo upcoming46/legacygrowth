@@ -6,7 +6,7 @@ import { PortfolioSection } from "@/components/PortfolioSection";
 import { HowItWorksSection } from "@/components/HowItWorksSection";
 import { ResultsGallerySection } from "@/components/ResultsGallerySection";
 import { SEOHead } from "@/components/SEOHead";
-import { TestimonialsSection } from "@/components/TestimonialsSection";
+import { PremiumTestimonials } from "@/components/ui/premium-testimonials";
 import { ThreeStagePromiseSection } from "@/components/ThreeStagePromiseSection";
 import { WhatIfSection } from "@/components/WhatIfSection";
 import { UrgencyBannerSection } from "@/components/UrgencyBannerSection";
@@ -149,7 +149,7 @@ const Index = () => {
       </LazySection>
       
       <LazySection>
-        <TestimonialsSection />
+        <PremiumTestimonials />
       </LazySection>
 
       <LazySection>
