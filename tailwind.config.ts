@@ -26,10 +26,11 @@ export default {
 			'2xl': '1536px',
 		},
 		extend: {
-			fontFamily: {
-				'serif': ['Playfair Display', 'serif'],
-				'sans': ['Inter', 'sans-serif'],
-			},
+		fontFamily: {
+			'serif': ['Playfair Display', 'serif'],
+			'sans': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+			'heading': ['Poppins', 'sans-serif'],
+		},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
