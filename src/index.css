@@ -124,6 +124,179 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    color: hsl(var(--foreground));
+    font-weight: 700;
+  }
+
+  h1 {
+    font-size: 48px;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 32px;
+    line-height: 1.3;
+  }
+
+  h3 {
+    font-size: 24px;
+    line-height: 1.4;
+  }
+
+  small {
+    font-size: 14px;
+    color: hsl(210 8% 50%);
+  }
+}
+
+@layer components {
+  /* Primary CTA Button */
+  .btn-primary, .btn-cta {
+    background-color: hsl(var(--primary));
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all var(--transition-smooth);
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .btn-primary:hover, .btn-cta:hover {
+    background-color: hsl(var(--luxury-navy));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px hsl(var(--primary) / 0.3);
+  }
+
+  .btn-primary:active, .btn-cta:active {
+    transform: translateY(0);
+  }
+
+  /* Secondary Button */
+  .btn-secondary {
+    background-color: transparent;
+    color: hsl(var(--primary));
+    border: 2px solid hsl(var(--primary));
+    padding: 12px 30px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: color var(--transition-smooth);
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .btn-secondary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: hsl(var(--primary));
+    z-index: -1;
+    transition: left var(--transition-smooth);
+  }
+
+  .btn-secondary:hover {
+    color: white;
+  }
+
+  .btn-secondary:hover::before {
+    left: 0;
+  }
+
+  /* Action Button (Warm Orange) */
+  .btn-action {
+    background-color: hsl(var(--accent));
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all var(--transition-smooth);
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .btn-action:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px hsl(var(--accent) / 0.3);
+  }
+
+  /* Card Components */
+  .card-teal {
+    background-color: white;
+    border-top: 4px solid hsl(var(--primary));
+    border-radius: 8px;
+    box-shadow: 0 2px 8px hsl(0 0% 0% / 0.08);
+  }
+
+  /* Testimonial Card */
+  .testimonial-card {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    border-left: 4px solid hsl(var(--primary));
+    transition: all var(--transition-smooth);
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px hsl(var(--primary) / 0.15);
+  }
+
+  /* Metric Card */
+  .metric-card {
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%);
+    border-radius: 8px;
+    border-top: 4px solid hsl(var(--primary));
+    transition: all var(--transition-smooth);
+  }
+
+  .metric-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px hsl(var(--primary) / 0.1);
+  }
+
+  /* Parallax */
+  .parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.05) 0%, hsl(var(--secondary) / 0.05) 100%);
+    z-index: 0;
+    will-change: transform;
+  }
+
+  .parallax-content {
+    position: relative;
+    z-index: 1;
   }
 }
 
@@ -145,6 +318,72 @@ All colors MUST be HSL.
   @keyframes glowPulse {
     from { box-shadow: 0 0 20px hsl(var(--accent) / 0.5); }
     to { box-shadow: 0 0 30px hsl(var(--accent) / 0.8); }
+  }
+
+  @keyframes iconBounce {
+    0% { opacity: 0; transform: scale(0.5) translateY(10px); }
+    50% { transform: scale(1.1); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  @keyframes iconPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+
+  .icon-animate {
+    display: inline-block;
+    font-size: 32px;
+    animation: iconBounce 0.6s ease-out;
+  }
+
+  .icon-animate:hover {
+    animation: iconPulse 0.6s ease-in-out;
+  }
+
+  /* Scroll animations */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .slide-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .slide-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .scale-up {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .scale-up.visible {
+    opacity: 1;
+    transform: scale(1);
   }
 
   /* Touch-friendly targets - minimum 44x44px */
@@ -169,11 +408,27 @@ All colors MUST be HSL.
       padding-left: 1rem;
       padding-right: 1rem;
     }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 26px; }
+    h3 { font-size: 20px; }
   }
 
   /* Safe area padding for notched devices */
   .safe-area-pb {
     padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
   
   /* Hide Lovable badges and elements */
