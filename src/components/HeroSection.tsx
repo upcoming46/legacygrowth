@@ -29,7 +29,7 @@ export function HeroSection() {
       {/* Dark overlay for text readability */}
       <div className="absolute inset-0 bg-black/30 z-[1]" />
 
-      <div className="container mx-auto px-4 py-16 relative z-10">
+      <div className="container mx-auto px-4 pt-8 pb-16 relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* Left Column - Content */}
           <div className="text-center lg:text-left animate-fade-in">

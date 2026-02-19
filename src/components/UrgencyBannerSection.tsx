@@ -43,7 +43,7 @@ export function UrgencyBannerSection() {
   };
 
   return (
-    <section className="py-4 sm:py-6 lg:py-8 bg-gradient-to-r from-red-600 to-red-700 border-t-4 border-accent">
+    <section className="py-2 sm:py-3 bg-gradient-to-r from-red-600 to-red-700 border-t-2 border-accent">
       <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-6">
         <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4 text-center sm:text-left">
           <Flame className="h-8 w-8 sm:h-10 sm:w-10 text-white animate-pulse flex-shrink-0 bg-white/20 rounded-full p-2" />
