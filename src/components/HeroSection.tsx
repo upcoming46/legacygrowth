@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { TwoStepCTAModal } from "@/components/TwoStepCTAModal";
 import { ShaderBackground } from "@/components/ui/neural-network-hero";
 import { MessageCircle, Mail, Star, TrendingUp, DollarSign } from "lucide-react";
-import heroImage from "@/assets/hero-image.jpg";
+import heroImage from "@/assets/hero-revenue.jpg";
 
 export function HeroSection() {
   const [showCTAModal, setShowCTAModal] = useState(false);
@@ -29,8 +29,8 @@ export function HeroSection() {
       {/* Dark overlay for text readability */}
       <div className="absolute inset-0 bg-black/30 z-[1]" />
 
-      <div className="container mx-auto px-4 py-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-4 py-16 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* Left Column - Content */}
           <div className="text-center lg:text-left animate-fade-in">
             {/* Success Indicators */}
@@ -98,27 +98,27 @@ export function HeroSection() {
           </div>
 
           {/* Right Column - Image */}
-          <div className="relative animate-scale-in">
-            <div className="relative">
+          <div className="relative animate-scale-in flex items-center justify-center">
+            <div className="relative w-full max-w-lg mx-auto">
               <img
                 src={heroImage}
-                alt="Harper Harvey helping people achieve digital success"
-                className="w-full h-auto rounded-2xl shadow-elegant"
+                alt="Revenue dashboard showing sales growth and funnel analytics"
+                className="w-full h-auto rounded-2xl shadow-elegant border border-white/10"
                 width={628}
-                height={353}
+                height={628}
                 decoding="async"
                 fetchPriority="high"
                 loading="eager"
               />
               {/* Floating Success Cards */}
-              <Card className="absolute -top-4 -left-4 p-3 bg-white shadow-success animate-bounce">
+              <Card className="absolute -top-3 -left-3 p-2.5 bg-white shadow-success animate-bounce">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                   <span className="text-sm font-medium">$424 overnight sale!</span>
                 </div>
               </Card>
               
-              <Card className="absolute -bottom-4 -right-4 p-3 bg-white shadow-glow">
+              <Card className="absolute -bottom-3 -right-3 p-2.5 bg-white shadow-glow">
                 <div className="flex items-center gap-2">
                   <TrendingUp className="h-4 w-4 text-primary" />
                   <span className="text-sm font-medium">1.6K views in 3 days</span>
