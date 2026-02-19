@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { TwoStepCTAModal } from "@/components/TwoStepCTAModal";
 import { ShaderBackground } from "@/components/ui/neural-network-hero";
 import { MessageCircle, Mail, Star, TrendingUp, DollarSign } from "lucide-react";
-import heroImage from "@/assets/hero-revenue.jpg";
+import { RevenueTrendChart } from "@/components/RevenueTrendChart";
 
 export function HeroSection() {
   const [showCTAModal, setShowCTAModal] = useState(false);
@@ -97,33 +97,10 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column - Image */}
+          {/* Right Column - Interactive Chart */}
           <div className="relative animate-scale-in flex items-center justify-center">
             <div className="relative w-full max-w-lg mx-auto">
-              <img
-                src={heroImage}
-                alt="Revenue dashboard showing sales growth and funnel analytics"
-                className="w-full h-auto rounded-2xl shadow-elegant border border-white/10"
-                width={628}
-                height={628}
-                decoding="async"
-                fetchPriority="high"
-                loading="eager"
-              />
-              {/* Floating Success Cards */}
-              <Card className="absolute -top-3 -left-3 p-2.5 bg-white shadow-success animate-bounce">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                  <span className="text-sm font-medium">$424 overnight sale!</span>
-                </div>
-              </Card>
-              
-              <Card className="absolute -bottom-3 -right-3 p-2.5 bg-white shadow-glow">
-                <div className="flex items-center gap-2">
-                  <TrendingUp className="h-4 w-4 text-primary" />
-                  <span className="text-sm font-medium">1.6K views in 3 days</span>
-                </div>
-              </Card>
+              <RevenueTrendChart />
             </div>
           </div>
         </div>
