@@ -1,99 +1,67 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { TrendingUp, DollarSign, Users, Eye } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { TrendingUp, DollarSign } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
 import result1 from "@/assets/client-results/result-1.jpg";
 import result2 from "@/assets/client-results/result-2.jpg";
 import result3 from "@/assets/client-results/result-3.jpg";
 import result4 from "@/assets/client-results/result-4.jpg";
 import result5 from "@/assets/client-results/result-5.jpg";
 
+function LazyResultImage({ src, alt }: { src: string; alt: string }) {
+  const [isInView, setIsInView] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const imgRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '100px', threshold: 0.01 }
+    );
+    if (imgRef.current) observer.observe(imgRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={imgRef} className="mb-4 w-full h-24 rounded-lg overflow-hidden bg-muted/20">
+      {isInView && (
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          decoding="async"
+          width={355}
+          height={96}
+          className={`w-full h-full object-cover transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+          onLoad={() => setIsLoaded(true)}
+        />
+      )}
+      {!isLoaded && <div className="w-full h-full animate-pulse bg-muted/30" />}
+    </div>
+  );
+}
+
 export function ResultsGallerySection() {
-  const [visibleResults, setVisibleResults] = useState(6); // Show only 6 initially
+  const [visibleResults, setVisibleResults] = useState(6);
   const [isLoading, setIsLoading] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+
   const results = [
-    {
-      type: "Cash App Balance",
-      amount: "$474,542",
-      description: "Total cash app earnings",
-      time: "Real client result",
-      icon: DollarSign,
-      gradient: "gradient-gold",
-      image: result1
-    },
-    {
-      type: "Bank Balance", 
-      amount: "$256,880",
-      description: "Available bank balance",
-      time: "Real client result",
-      icon: DollarSign,
-      gradient: "gradient-purple",
-      image: result2
-    },
-    {
-      type: "PayPal Balance",
-      amount: "$70,900", 
-      description: "PayPal account balance",
-      time: "Real client result",
-      icon: DollarSign,
-      gradient: "gradient-navy",
-      image: result3
-    },
-    {
-      type: "Beacons Revenue",
-      amount: "$38,378",
-      description: "Monthly Beacons earnings", 
-      time: "Real client result",
-      icon: TrendingUp,
-      gradient: "gradient-gold",
-      image: result4
-    },
-    {
-      type: "Credit Alert",
-      amount: "$30,000",
-      description: "Bank credit notification",
-      time: "Real client result", 
-      icon: DollarSign,
-      gradient: "gradient-purple",
-      image: result5
-    },
-    {
-      type: "Store Revenue",
-      amount: "$25,639",
-      description: "Digital store earnings",
-      time: "Real client result",
-      icon: TrendingUp,
-      gradient: "gradient-navy",
-      image: result1
-    },
-    {
-      type: "Direct Deposit",
-      amount: "$20,833",
-      description: "Cash App direct deposit",
-      time: "Real client result",
-      icon: DollarSign,
-      gradient: "gradient-gold",
-      image: result2
-    },
-    {
-      type: "Stan Store",
-      amount: "$12,747",
-      description: "Stan store total revenue",
-      time: "Real client result",
-      icon: TrendingUp,
-      gradient: "gradient-purple",
-      image: result3
-    },
-    {
-      type: "Daily Balance",
-      amount: "$15,102",
-      description: "Cash App daily balance",
-      time: "Real client result",
-      icon: DollarSign,
-      gradient: "gradient-navy",
-      image: result4
-    }
+    { type: "Cash App Balance", amount: "$474,542", description: "Total cash app earnings", time: "Real client result", icon: DollarSign, image: result1 },
+    { type: "Bank Balance", amount: "$256,880", description: "Available bank balance", time: "Real client result", icon: DollarSign, image: result2 },
+    // NOTE: result-3.jpg is 9.1MB — should be replaced with an optimized version (< 200KB)
+    { type: "PayPal Balance", amount: "$70,900", description: "PayPal account balance", time: "Real client result", icon: DollarSign, image: result3 },
+    { type: "Beacons Revenue", amount: "$38,378", description: "Monthly Beacons earnings", time: "Real client result", icon: TrendingUp, image: result4 },
+    { type: "Credit Alert", amount: "$30,000", description: "Bank credit notification", time: "Real client result", icon: DollarSign, image: result5 },
+    { type: "Store Revenue", amount: "$25,639", description: "Digital store earnings", time: "Real client result", icon: TrendingUp, image: result1 },
+    { type: "Direct Deposit", amount: "$20,833", description: "Cash App direct deposit", time: "Real client result", icon: DollarSign, image: result2 },
+    { type: "Stan Store", amount: "$12,747", description: "Stan store total revenue", time: "Real client result", icon: TrendingUp, image: result3 },
+    { type: "Daily Balance", amount: "$15,102", description: "Cash App daily balance", time: "Real client result", icon: DollarSign, image: result4 },
   ];
 
   const loadMoreResults = () => {
@@ -123,28 +91,13 @@ export function ResultsGallerySection() {
           {results.slice(0, visibleResults).map((result, index) => {
             const IconComponent = result.icon;
             return (
-              <Card 
+              <Card
                 key={index}
-                className={`bg-gradient-luxury p-6 text-white border-0 hover:transform hover:scale-105 transition-all duration-300 hover:shadow-luxury group relative overflow-hidden`}
+                className="bg-gradient-luxury p-6 text-white border-0 hover:transform hover:scale-105 transition-all duration-300 hover:shadow-luxury group relative overflow-hidden"
               >
-                <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full -translate-y-10 translate-x-10"></div>
+                <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full -translate-y-10 translate-x-10" />
                 <div className="relative z-10">
-                  {/* Result Screenshot */}
-                  <div className="mb-4">
-                    <img 
-                      src={result.image} 
-                      alt={`${result.type} result screenshot`} 
-                      className="w-full h-24 object-cover rounded-lg shadow-lg opacity-90"
-                      loading="lazy"
-                      decoding="async"
-                      width="355"
-                      height="96"
-                      onLoad={(e) => {
-                        e.currentTarget.style.opacity = '1';
-                      }}
-                      style={{ opacity: '0', transition: 'opacity 0.3s ease' }}
-                    />
-                  </div>
+                  <LazyResultImage src={result.image} alt={`${result.type} - ${result.amount} earnings screenshot`} />
                   
                   <div className="flex items-center justify-between mb-4">
                     <Badge variant="secondary" className="bg-white/20 text-white border-0">
@@ -157,14 +110,10 @@ export function ResultsGallerySection() {
                     <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
                       <IconComponent className="h-6 w-6 text-white" />
                     </div>
-                    <div>
-                      <div className="text-3xl font-bold text-white">{result.amount}</div>
-                    </div>
+                    <div className="text-3xl font-bold text-white">{result.amount}</div>
                   </div>
                   
-                  <p className="text-white/80 text-sm leading-relaxed">
-                    {result.description}
-                  </p>
+                  <p className="text-white/80 text-sm leading-relaxed">{result.description}</p>
                 </div>
               </Card>
             );
@@ -184,11 +133,9 @@ export function ResultsGallerySection() {
         )}
 
         <div className="text-center mt-12">
-          <p className="text-muted-foreground mb-4">
-            Want to see your results here next?
-          </p>
+          <p className="text-muted-foreground mb-4">Want to see your results here next?</p>
           <div className="inline-flex items-center gap-2 text-primary font-semibold">
-            <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+            <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
             New results posting every day
           </div>
         </div>

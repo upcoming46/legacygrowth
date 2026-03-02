@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { TwoStepCTAModal } from "@/components/TwoStepCTAModal";
-import { ShaderBackground } from "@/components/ui/neural-network-hero";
+import { CSSHeroBackground } from "@/components/ui/css-hero-background";
 import { MessageCircle, Mail, Star, TrendingUp, DollarSign } from "lucide-react";
 import { RevenueTrendChart } from "@/components/RevenueTrendChart";
 
@@ -22,10 +22,8 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary">
-      {/* Neural Network Shader Background */}
-      <div className="absolute inset-0 w-full h-full z-0">
-        <ShaderBackground />
-      </div>
+      {/* Lightweight CSS-only animated background */}
+      <CSSHeroBackground />
       {/* Dark overlay for text readability */}
       <div className="absolute inset-0 bg-black/30 z-[1]" />
 

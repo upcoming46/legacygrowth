@@ -3,7 +3,6 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { useState } from "react";
 import { Eye } from "lucide-react";
 import { SwipeableGallery } from "@/components/SwipeableGallery";
-import { ImageWithSkeleton } from "@/components/ImageWithSkeleton";
 import { useIsMobile } from "@/hooks/use-mobile";
 import template1 from "@/assets/templates/template1.webp";
 import template2 from "@/assets/templates/template2.webp";
@@ -19,6 +18,29 @@ import dwaTemplate from "@/assets/templates/dwa-template.png";
 import oralHealthTemplate from "@/assets/templates/oral-health-template.png";
 import legacyBuilderTemplate from "@/assets/templates/legacy-builder-template.png";
 import goldenStrategiesTemplate from "@/assets/templates/golden-strategies-template.png";
+
+function BlurUpImage({ src, alt, className = "", width, height }: { src: string; alt: string; className?: string; width: number; height: number }) {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  return (
+    <div className="relative w-full h-full bg-muted/30">
+      {/* Blur placeholder */}
+      {!isLoaded && (
+        <div className="absolute inset-0 animate-pulse bg-muted/40" />
+      )}
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+        width={width}
+        height={height}
+        className={`transition-all duration-500 ${isLoaded ? 'opacity-100 blur-0' : 'opacity-0 blur-sm'} ${className}`}
+        onLoad={() => setIsLoaded(true)}
+      />
+    </div>
+  );
+}
 
 export function PortfolioSection() {
   const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null);
@@ -41,6 +63,29 @@ export function PortfolioSection() {
     { src: goldenStrategiesTemplate, alt: "Marketing Strategies Store", category: "Marketing" },
   ];
 
+  const renderCard = (template: typeof templates[0], index: number, showOverlayAlways = false) => (
+    <Card
+      key={index}
+      className={`group relative overflow-hidden cursor-pointer hover:shadow-elegant transition-all duration-300 touch-manipulation ${!showOverlayAlways ? 'transform hover:scale-105' : ''}`}
+      style={!showOverlayAlways ? { animationDelay: `${index * 0.1}s` } : undefined}
+      onClick={() => setSelectedTemplate(template.src)}
+    >
+      <div className="relative" style={{ aspectRatio: '9/16' }}>
+        <BlurUpImage
+          src={template.src}
+          alt={template.alt}
+          className="w-full h-full object-cover"
+          width={225}
+          height={400}
+        />
+        <div className={`absolute inset-0 flex flex-col items-center justify-center gap-2 ${showOverlayAlways ? 'bg-black/40' : 'bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300'}`}>
+          <Eye className="h-8 w-8 text-white" />
+          <p className="text-white font-semibold text-sm px-2 text-center">{template.category}</p>
+        </div>
+      </div>
+    </Card>
+  );
+
   return (
     <section className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
@@ -56,69 +101,18 @@ export function PortfolioSection() {
 
         {isMobile ? (
           <SwipeableGallery className="max-w-sm mx-auto">
-            {templates.map((template, index) => (
-              <Card
-                key={index}
-                className="group relative overflow-hidden cursor-pointer hover:shadow-elegant transition-all duration-300 touch-manipulation"
-                onClick={() => setSelectedTemplate(template.src)}
-              >
-                <div className="relative aspect-[9/16]">
-                  <ImageWithSkeleton
-                    src={template.src}
-                    alt={template.alt}
-                    className="w-full h-full object-cover"
-                    skeletonClassName="w-full h-full"
-                    width={225}
-                    height={400}
-                  />
-                  <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center gap-2">
-                    <Eye className="h-8 w-8 text-white" />
-                    <p className="text-white font-semibold text-sm px-2 text-center">
-                      {template.category}
-                    </p>
-                  </div>
-                </div>
-              </Card>
-            ))}
+            {templates.map((t, i) => renderCard(t, i, true))}
           </SwipeableGallery>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 max-w-7xl mx-auto">
-            {templates.map((template, index) => (
-              <Card
-                key={index}
-                className="group relative overflow-hidden cursor-pointer hover:shadow-elegant transition-all duration-300 transform hover:scale-105 animate-fade-in touch-manipulation"
-                style={{ animationDelay: `${index * 0.1}s` }}
-                onClick={() => setSelectedTemplate(template.src)}
-              >
-                <div className="relative aspect-[9/16]">
-                  <ImageWithSkeleton
-                    src={template.src}
-                    alt={template.alt}
-                    className="w-full h-full object-cover"
-                    skeletonClassName="w-full h-full"
-                    width={225}
-                    height={400}
-                  />
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-2">
-                    <Eye className="h-8 w-8 text-white" />
-                    <p className="text-white font-semibold text-sm px-2 text-center">
-                      {template.category}
-                    </p>
-                  </div>
-                </div>
-              </Card>
-            ))}
+            {templates.map((t, i) => renderCard(t, i))}
           </div>
         )}
 
         <div className="text-center mt-12 animate-fade-in">
           <Card className="p-8 bg-primary text-primary-foreground max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold mb-4">
-              Want a Custom Store Like These?
-            </h3>
-            <p className="text-lg opacity-90">
-              Each store is tailored to convert visitors into customers. Let me build yours next.
-            </p>
+            <h3 className="text-2xl font-bold mb-4">Want a Custom Store Like These?</h3>
+            <p className="text-lg opacity-90">Each store is tailored to convert visitors into customers. Let me build yours next.</p>
           </Card>
         </div>
       </div>
@@ -132,6 +126,10 @@ export function PortfolioSection() {
                 src={selectedTemplate}
                 alt="Full template view"
                 className="w-full h-auto"
+                loading="eager"
+                decoding="async"
+                width={600}
+                height={1067}
               />
             )}
           </div>

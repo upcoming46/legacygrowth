@@ -4,7 +4,6 @@ import { Flame, Clock, MessageCircle } from "lucide-react";
 import { getWhatsAppLink } from "@/config/whatsapp";
 
 export function UrgencyBannerSection() {
-  // Get current month name
   const getCurrentMonth = () => {
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 
                     'July', 'August', 'September', 'October', 'November', 'December'];
@@ -12,28 +11,19 @@ export function UrgencyBannerSection() {
   };
 
   const [timeLeft, setTimeLeft] = useState({
-    days: 2,
-    hours: 14,
-    minutes: 33,
-    seconds: 45
+    days: 2, hours: 14, minutes: 33, seconds: 45
   });
 
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft(prev => {
-        if (prev.seconds > 0) {
-          return { ...prev, seconds: prev.seconds - 1 };
-        } else if (prev.minutes > 0) {
-          return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
-        } else if (prev.hours > 0) {
-          return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 };
-        } else if (prev.days > 0) {
-          return { ...prev, days: prev.days - 1, hours: 23, minutes: 59, seconds: 59 };
-        }
+        if (prev.seconds > 0) return { ...prev, seconds: prev.seconds - 1 };
+        if (prev.minutes > 0) return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
+        if (prev.hours > 0) return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 };
+        if (prev.days > 0) return { ...prev, days: prev.days - 1, hours: 23, minutes: 59, seconds: 59 };
         return prev;
       });
     }, 1000);
-
     return () => clearInterval(timer);
   }, []);
 
@@ -43,8 +33,8 @@ export function UrgencyBannerSection() {
   };
 
   return (
-    <section className="py-2 sm:py-3 bg-gradient-to-r from-red-600 to-red-700 border-t-2 border-accent">
-      <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-6">
+    <section className="bg-gradient-to-r from-red-600 to-red-700 border-t-2 border-accent" style={{ minHeight: '64px' }}>
+      <div className="container mx-auto px-4 py-2 sm:py-3 flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-6">
         <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4 text-center sm:text-left">
           <Flame className="h-8 w-8 sm:h-10 sm:w-10 text-white animate-pulse flex-shrink-0 bg-white/20 rounded-full p-2" />
           <div>
@@ -58,7 +48,7 @@ export function UrgencyBannerSection() {
         </div>
 
         <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-          <div className="flex items-center gap-2 sm:gap-4 text-white">
+          <div className="flex items-center gap-2 sm:gap-4 text-white" style={{ minHeight: '32px' }}>
             <Clock className="h-4 w-4 sm:h-5 sm:w-5" />
             <span className="flex gap-1 sm:gap-2 text-xs sm:text-sm font-mono">
               <span className="bg-white/20 px-1 sm:px-2 py-1 rounded text-center min-w-[2rem] sm:min-w-[2.5rem]">
