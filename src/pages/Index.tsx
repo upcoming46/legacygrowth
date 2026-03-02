@@ -1,38 +1,57 @@
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import { HeroSection } from "@/components/HeroSection";
 import { WhoIHelpSection } from "@/components/WhoIHelpSection";
 import { PickYourPathSection } from "@/components/PickYourPathSection";
-import { PortfolioSection } from "@/components/PortfolioSection";
-import { HowItWorksSection } from "@/components/HowItWorksSection";
-import { ResultsGallerySection } from "@/components/ResultsGallerySection";
 import { SEOHead } from "@/components/SEOHead";
-import { PremiumTestimonials } from "@/components/ui/premium-testimonials";
-import { ThreeStagePromiseSection } from "@/components/ThreeStagePromiseSection";
-import { WhatIfSection } from "@/components/WhatIfSection";
 import { UrgencyBannerSection } from "@/components/UrgencyBannerSection";
-import { WhyNowSection } from "@/components/WhyNowSection";
-import { FinalCTASection } from "@/components/FinalCTASection";
-import { ExitIntentModal } from "@/components/ExitIntentModal";
 import { ReadingProgressBar } from "@/components/ReadingProgressBar";
 import { StickyMobileCTA } from "@/components/StickyMobileCTA";
-import { QuizModal } from "@/components/QuizModal";
 import { LazySection } from "@/components/LazySection";
 import { TrustedLogosSection } from "@/components/TrustedLogosSection";
-import { FAQSection } from "@/components/FAQSection";
-import { ContactFormModal } from "@/components/ContactFormModal";
+import { LiveSuccessCounter } from "@/components/LiveSuccessCounter";
+import { MobileNavigation } from "@/components/MobileNavigation";
 import { useExitIntent } from "@/hooks/useExitIntent";
 import { useHolidayTheme } from "@/hooks/useHolidayTheme";
 import { HolidayBanner } from "@/components/HolidayBanner";
-import { HolidayOfferCard } from "@/components/HolidayOfferCard";
-import { ROICalculator } from "@/components/ROICalculator";
-import { LiveSuccessCounter } from "@/components/LiveSuccessCounter";
-import { CertificationBadges } from "@/components/CertificationBadges";
-import { MobileNavigation } from "@/components/MobileNavigation";
 import { ScrollToTopButton } from "@/components/ScrollToTopButton";
 import { PullToRefresh } from "@/components/PullToRefresh";
 import { Button } from "@/components/ui/button";
 import { Brain, MessageCircle, CreditCard } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { Skeleton } from "@/components/ui/skeleton";
+
+// Lazy-loaded heavy components
+const PortfolioSection = lazy(() => import("@/components/PortfolioSection").then(m => ({ default: m.PortfolioSection })));
+const ROICalculator = lazy(() => import("@/components/ROICalculator").then(m => ({ default: m.ROICalculator })));
+const HowItWorksSection = lazy(() => import("@/components/HowItWorksSection").then(m => ({ default: m.HowItWorksSection })));
+const ResultsGallerySection = lazy(() => import("@/components/ResultsGallerySection").then(m => ({ default: m.ResultsGallerySection })));
+const ThreeStagePromiseSection = lazy(() => import("@/components/ThreeStagePromiseSection").then(m => ({ default: m.ThreeStagePromiseSection })));
+const PremiumTestimonials = lazy(() => import("@/components/ui/premium-testimonials").then(m => ({ default: m.PremiumTestimonials })));
+const CertificationBadges = lazy(() => import("@/components/CertificationBadges").then(m => ({ default: m.CertificationBadges })));
+const WhatIfSection = lazy(() => import("@/components/WhatIfSection").then(m => ({ default: m.WhatIfSection })));
+const WhyNowSection = lazy(() => import("@/components/WhyNowSection").then(m => ({ default: m.WhyNowSection })));
+const FAQSection = lazy(() => import("@/components/FAQSection").then(m => ({ default: m.FAQSection })));
+const FinalCTASection = lazy(() => import("@/components/FinalCTASection").then(m => ({ default: m.FinalCTASection })));
+const ExitIntentModal = lazy(() => import("@/components/ExitIntentModal").then(m => ({ default: m.ExitIntentModal })));
+const QuizModal = lazy(() => import("@/components/QuizModal").then(m => ({ default: m.QuizModal })));
+const ContactFormModal = lazy(() => import("@/components/ContactFormModal").then(m => ({ default: m.ContactFormModal })));
+const HolidayOfferCard = lazy(() => import("@/components/HolidayOfferCard").then(m => ({ default: m.HolidayOfferCard })));
+
+function SectionSkeleton({ height = "min-h-[400px]" }: { height?: string }) {
+  return (
+    <div className={`${height} space-y-6 p-8`}>
+      <div className="text-center space-y-4">
+        <Skeleton className="h-10 w-3/4 mx-auto" />
+        <Skeleton className="h-5 w-1/2 mx-auto" />
+      </div>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[...Array(3)].map((_, i) => (
+          <Skeleton key={i} className="h-32 w-full rounded-lg" />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 const Index = () => {
   const { shouldShow: showExitIntent, resetExitIntent } = useExitIntent();
@@ -46,7 +65,6 @@ const Index = () => {
       <SEOHead />
       <ReadingProgressBar />
       
-      {/* Holiday Banner - Shows at top when holiday is active */}
       <HolidayBanner />
       
       <UrgencyBannerSection />
@@ -81,8 +99,10 @@ const Index = () => {
       <LiveSuccessCounter />
       <WhoIHelpSection />
       
-      <LazySection>
-        <PortfolioSection />
+      <LazySection fallbackHeight="min-h-[600px]">
+        <Suspense fallback={<SectionSkeleton height="min-h-[600px]" />}>
+          <PortfolioSection />
+        </Suspense>
       </LazySection>
       
       {/* Quiz CTA Section */}
@@ -113,63 +133,84 @@ const Index = () => {
 
       <PickYourPathSection />
 
-      <LazySection>
-        <ROICalculator />
+      <LazySection fallbackHeight="min-h-[400px]">
+        <Suspense fallback={<SectionSkeleton height="min-h-[400px]" />}>
+          <ROICalculator />
+        </Suspense>
       </LazySection>
 
-      {/* Holiday Special Offer - Shows when holiday is active */}
       {currentHoliday && (
-        <LazySection>
-          <section className="py-16 px-4 bg-gradient-to-br from-background via-muted/30 to-background">
-            <div className="container max-w-4xl mx-auto">
-              <div className="text-center mb-8">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  {currentHoliday.decorations.icon} Limited Time {currentHoliday.name} Offer {currentHoliday.decorations.icon}
-                </h2>
-                <p className="text-lg text-muted-foreground">
-                  Celebrate {currentHoliday.name} with exclusive savings on all digital business setups!
-                </p>
+        <LazySection fallbackHeight="min-h-[300px]">
+          <Suspense fallback={<SectionSkeleton height="min-h-[300px]" />}>
+            <section className="py-16 px-4 bg-gradient-to-br from-background via-muted/30 to-background">
+              <div className="container max-w-4xl mx-auto">
+                <div className="text-center mb-8">
+                  <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                    {currentHoliday.decorations.icon} Limited Time {currentHoliday.name} Offer {currentHoliday.decorations.icon}
+                  </h2>
+                  <p className="text-lg text-muted-foreground">
+                    Celebrate {currentHoliday.name} with exclusive savings on all digital business setups!
+                  </p>
+                </div>
+                <HolidayOfferCard onCTAClick={() => setShowContactForm(true)} />
               </div>
-              <HolidayOfferCard onCTAClick={() => setShowContactForm(true)} />
-            </div>
-          </section>
+            </section>
+          </Suspense>
         </LazySection>
       )}
       
-      <LazySection>
-        <HowItWorksSection />
+      <LazySection fallbackHeight="min-h-[500px]">
+        <Suspense fallback={<SectionSkeleton height="min-h-[500px]" />}>
+          <HowItWorksSection />
+        </Suspense>
       </LazySection>
       
-      <LazySection>
-        <ResultsGallerySection />
+      <LazySection fallbackHeight="min-h-[600px]">
+        <Suspense fallback={<SectionSkeleton height="min-h-[600px]" />}>
+          <ResultsGallerySection />
+        </Suspense>
       </LazySection>
       
-      <LazySection>
-        <ThreeStagePromiseSection />
+      <LazySection fallbackHeight="min-h-[500px]">
+        <Suspense fallback={<SectionSkeleton height="min-h-[500px]" />}>
+          <ThreeStagePromiseSection />
+        </Suspense>
       </LazySection>
       
-      <LazySection>
-        <PremiumTestimonials />
+      <LazySection fallbackHeight="min-h-[600px]">
+        <Suspense fallback={<SectionSkeleton height="min-h-[600px]" />}>
+          <PremiumTestimonials />
+        </Suspense>
       </LazySection>
 
-      <LazySection>
-        <CertificationBadges />
+      <LazySection fallbackHeight="min-h-[300px]">
+        <Suspense fallback={<SectionSkeleton height="min-h-[300px]" />}>
+          <CertificationBadges />
+        </Suspense>
       </LazySection>
       
-      <LazySection>
-        <WhatIfSection />
+      <LazySection fallbackHeight="min-h-[400px]">
+        <Suspense fallback={<SectionSkeleton height="min-h-[400px]" />}>
+          <WhatIfSection />
+        </Suspense>
       </LazySection>
       
-      <LazySection>
-        <WhyNowSection />
+      <LazySection fallbackHeight="min-h-[500px]">
+        <Suspense fallback={<SectionSkeleton height="min-h-[500px]" />}>
+          <WhyNowSection />
+        </Suspense>
       </LazySection>
 
-      <LazySection>
-        <FAQSection />
+      <LazySection fallbackHeight="min-h-[400px]">
+        <Suspense fallback={<SectionSkeleton height="min-h-[400px]" />}>
+          <FAQSection />
+        </Suspense>
       </LazySection>
       
-      <LazySection>
-        <FinalCTASection />
+      <LazySection fallbackHeight="min-h-[300px]">
+        <Suspense fallback={<SectionSkeleton height="min-h-[300px]" />}>
+          <FinalCTASection />
+        </Suspense>
       </LazySection>
 
       {/* Quick Contact CTA */}
@@ -195,18 +236,24 @@ const Index = () => {
       
       <StickyMobileCTA />
       <ScrollToTopButton />
-      <ExitIntentModal 
-        isOpen={showExitIntent} 
-        onClose={resetExitIntent}
-      />
-      <QuizModal 
-        isOpen={showQuiz} 
-        onClose={() => setShowQuiz(false)}
-      />
-      <ContactFormModal 
-        isOpen={showContactForm} 
-        onClose={() => setShowContactForm(false)}
-      />
+      <Suspense fallback={null}>
+        <ExitIntentModal 
+          isOpen={showExitIntent} 
+          onClose={resetExitIntent}
+        />
+      </Suspense>
+      <Suspense fallback={null}>
+        <QuizModal 
+          isOpen={showQuiz} 
+          onClose={() => setShowQuiz(false)}
+        />
+      </Suspense>
+      <Suspense fallback={null}>
+        <ContactFormModal 
+          isOpen={showContactForm} 
+          onClose={() => setShowContactForm(false)}
+        />
+      </Suspense>
     </PullToRefresh>
   );
 };

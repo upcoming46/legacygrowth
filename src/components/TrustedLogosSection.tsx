@@ -1,3 +1,4 @@
+import { useState } from "react";
 import microsoftLogo from "@/assets/logos/microsoft.png";
 import danoneLogo from "@/assets/logos/danone.png";
 import pfizerLogo from "@/assets/logos/pfizer.png";
@@ -13,10 +14,14 @@ import fiverrLogo from "@/assets/logos/fiverr.png";
 import googleLogo from "@/assets/logos/google.png";
 import paypalLogo from "@/assets/logos/paypal.png";
 import stripeLogo from "@/assets/logos/stripe.png";
+// NOTE: skool.png is 168KB — very large for a small logo. Should be replaced with an optimized version (< 20KB).
 import skoolLogo from "@/assets/logos/skool.png";
 import beaconsLogo from "@/assets/logos/beacons.png";
 
 export function TrustedLogosSection() {
+  const [logosReady, setLogosReady] = useState(false);
+  const [loadedCount, setLoadedCount] = useState(0);
+
   const logos = [
     { src: microsoftLogo, alt: "Microsoft" },
     { src: danoneLogo, alt: "Danone" },
@@ -37,17 +42,27 @@ export function TrustedLogosSection() {
     { src: beaconsLogo, alt: "Beacons" },
   ];
 
-  // Triple the logos for seamless infinite loop
   const duplicatedLogos = [...logos, ...logos, ...logos];
 
+  const handleImageLoad = () => {
+    setLoadedCount(prev => {
+      const next = prev + 1;
+      // Start animation after enough logos have loaded (at least half)
+      if (next >= Math.ceil(logos.length / 2)) {
+        setLogosReady(true);
+      }
+      return next;
+    });
+  };
+
   return (
-    <div className="py-8 bg-muted/50 overflow-hidden">
+    <div className="py-8 bg-muted/50 overflow-hidden" style={{ minHeight: '120px' }}>
       <div className="container mx-auto px-4">
         <h3 className="text-center text-sm font-semibold text-muted-foreground mb-6">
           Trusted By Over 2.7 Million Customers
         </h3>
-        <div className="relative w-full overflow-hidden">
-          <div className="flex animate-scroll-logos w-max">
+        <div className="relative w-full overflow-hidden" style={{ minHeight: '48px' }}>
+          <div className={`flex w-max ${logosReady ? 'animate-scroll-logos' : ''}`}>
             {duplicatedLogos.map((logo, index) => (
               <div
                 key={index}
@@ -56,11 +71,12 @@ export function TrustedLogosSection() {
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  className="h-6 sm:h-8 md:h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
+                  className={`h-6 sm:h-8 md:h-10 w-auto object-contain transition-opacity duration-300 ${logosReady ? 'opacity-70 hover:opacity-100' : 'opacity-0'}`}
                   loading="lazy"
                   decoding="async"
                   width={120}
                   height={40}
+                  onLoad={index < logos.length ? handleImageLoad : undefined}
                 />
               </div>
             ))}
